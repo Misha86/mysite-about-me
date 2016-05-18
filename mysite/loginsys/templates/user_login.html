@@ -1,0 +1,17 @@
+{% load staticfiles %} {% load i18n %}
+
+<div class="row">
+    {% if user.is_authenticated %}
+        <div class="col-lg-3 col-xs-6 pull-right">
+            <h4><a href="{% url 'loginsys:logout' %}">Вийти ({{ user.username }}) </a></h4>
+        </div>
+    {% else %}
+        <div class="col-lg-1 pull-right">
+            <h4><a href="{% url 'loginsys:login' %}">{% trans 'Увійти' %}</a></h4>
+        </div>
+        <div class="col-lg-2 pull-right">
+            <h4><a href="{% url 'loginsys:register' %}">{% trans 'Реєстрація' %}</a></h4>
+        </div>
+
+    {% endif %}
+</div>
