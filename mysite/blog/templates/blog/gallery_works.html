@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load staticfiles %} {% load my_filters %} {% load i18n %}
 
 
-{% block title %}3D MAX | {{ category_3d_max.category_title }} {% endblock %}
+{% block title %}3D MAX | {{ category.category_title }} {% endblock %}
 
 
 {% block style %}
@@ -20,7 +20,7 @@
     {% if user.is_superuser %}
         <div class="row">
             <div class="col-md-4">
-                <a class="create_update" href="{% url 'blog:article_create' %}"><h3>{% trans 'Створити нову статтю?' %}</h3></a>
+                <a class="create_update" href="{% url 'blog:article_create' item_slug=category.menu_category.menu_name category_slug=category.category_name %}"><h3>{% trans 'Створити нову статтю?' %}</h3></a>
             </div>
         </div>
     {% endif %}
@@ -90,9 +90,11 @@
     <div id="works_3d_max">
         {% for article in articles %}
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <div class="d3_image">
-                    <a href="{{ article.get_absolute_url }}" title="{{ article.article_title }}"><img class="img-responsive img-rounded" src="{{article.article_image.url}}" alt="{{ article.article_title }}"/></a>
-                </div>
+                {% if article.article_image %}
+                    <div class="d3_image">
+                        <a href="{{ article.get_absolute_url }}" title="{{ article.article_title }}"><img class="img-responsive img-rounded" src="{{article.article_image.url}}" alt="{{ article.article_title }}"/></a>
+                    </div>
+                {% endif %}
                 <div class="image_title">
                     <ul>
                         <li>

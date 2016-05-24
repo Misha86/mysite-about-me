@@ -37,7 +37,7 @@ def start_page(request):
     return render(request, 'content_start_page.html', context)
 
 
-def article_create(request):
+def article_create(request, item_slug, category_slug):
     if not request.user.is_superuser:
         raise Http404
     title = 'Форма для створення статті'
@@ -48,6 +48,8 @@ def article_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.article_user = get_object_or_404(Profile, user=request.user)
+        instance.article_category = get_object_or_404(Category,  menu_category__menu_name=item_slug,
+                                                      category_name=category_slug)
         instance.save()
         messages.success(request, "Ура, стаття сворена!", extra_tags='success')
         return HttpResponseRedirect(instance.get_absolute_url())
@@ -61,7 +63,7 @@ def article_create(request):
     return render(request, 'article_form.html', context)
 
 
-def article_update(request, article_slug=None):
+def article_update(request, item_slug, category_slug, article_slug):
     if not request.user.is_staff or not request.user.is_superuser:
         # response = HttpResponse('<h1>Ти не маєш прав для оновлення статті!!!</h1')
         # response.status_code = 403
@@ -70,7 +72,8 @@ def article_update(request, article_slug=None):
     title = 'Форма оновлення статті'
     button_create = 'змінити статтю'
     button_cancel = 'відміна'
-    instance = get_object_or_404(Article, article_slug=article_slug)
+    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
+                                 article_category__category_name=category_slug, article_slug=article_slug)
     form = ArticleForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -89,11 +92,12 @@ def article_update(request, article_slug=None):
     return render(request, 'article_form.html', context)
 
 
-def article_delete(request, article_slug=None):
+def article_delete(request, item_slug, category_slug, article_slug):
     title = 'Ви впевнені, що хочете видалити дану статтю?'
     button_delete = 'видалити статтю'
     button_cancel = 'відміна'
-    instance = get_object_or_404(Article, article_slug=article_slug)
+    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
+                                 article_category__category_name=category_slug, article_slug=article_slug)
     return_path = instance.get_absolute_url()
     context = {
         'title': title,
@@ -104,14 +108,16 @@ def article_delete(request, article_slug=None):
     if request.POST:
         instance.delete()
         messages.error(request, 'Стаття ' + '\'' + instance.article_title + '\'' + ' видалена!', extra_tags='success')
-        return redirect('blog:article_list', category_slug=instance.article_category.category_name)
+        return redirect(reverse('blog:article_list', kwargs={'category_slug': instance.article_category.category_name,
+                                                             'item_slug': instance.article_category.menu_category.menu_name}))
     return render(request, 'article_delete_form.html', context)
 
 
-def article_list(request, category_slug):
-    category_3d_max = get_object_or_404(Category, category_name=category_slug)
-    articles_list = category_3d_max.articles.all().order_by('-article_date')
-    articles_carousel = category_3d_max.articles.all().order_by('-article_likes')[0:3]
+def article_list(request, item_slug, category_slug):
+    category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
+    articles_list = Article.objects.filter(article_category__category_name=category_slug,
+                                           article_category__menu_category__menu_name=item_slug).order_by('-article_date')
+    articles_carousel = articles_list.order_by('-article_likes')[0:3]
     query = request.GET.get('q')
     if query:
         articles_list = Article.objects.filter(
@@ -156,9 +162,9 @@ def article_list(request, category_slug):
     return render(request, 'gallery_works.html', locals())
 
 
-def article_detail(request, article_slug, category_slug):
-    category_3d_max = get_object_or_404(Category, category_name=category_slug)
-    article = category_3d_max.articles.get(article_slug=article_slug)
+def article_detail(request, item_slug, category_slug, article_slug):
+    category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
+    article = category.articles.get(article_slug=article_slug)
     comments = article.comments.all().order_by('-comments_create')
     current_page = Paginator(comments, 4)
     page_number = request.GET.get('page', 1)

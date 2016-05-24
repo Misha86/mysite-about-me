@@ -43,7 +43,7 @@ class Article(models.Model):
     article_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Дата створення"))
     article_update = models.DateTimeField(auto_now=True, verbose_name=_("Дата оновлення"))
     article_likes = models.IntegerField(verbose_name=_("Подобається"), default=0)
-    article_image = models.ImageField(verbose_name=_("Картинки"), upload_to=upload_location, blank=True,
+    article_image = models.ImageField(verbose_name=_("Картинки"), upload_to=upload_location, blank=True, null=True,
                                       help_text=_("Зображення до статті"))
     article_slug = models.SlugField(verbose_name=_("Ім`я статті транслітом"), blank=True, unique=True)
 
@@ -56,7 +56,8 @@ class Article(models.Model):
         return self.article_title
 
     def get_absolute_url(self):
-        return reverse('blog:article_detail', kwargs={'category_slug': self.article_category.category_name,
+        return reverse('blog:article_detail', kwargs={'item_slug': self.article_category.menu_category.menu_name,
+                                                      'category_slug': self.article_category.category_name,
                                                       'article_slug': self.article_slug})
     get_absolute_url.admin_order_field = 'article_date'
     get_absolute_url.short_description = _('Абсолютна адреса')
@@ -85,7 +86,7 @@ def create_slug(instance, new_slug=None):
 
 
 def pre_save_article_receiver(sender, instance, *args, **kwargs):
-        instance.article_slug = create_slug(instance)
+    instance.article_slug = create_slug(instance)
 
 
 pre_save.connect(pre_save_article_receiver, sender=Article)

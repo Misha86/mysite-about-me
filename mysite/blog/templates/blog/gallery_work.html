@@ -14,18 +14,21 @@
     {% if user.is_superuser %}
         <div class="row">
             <div class="col-md-3">
-                <a class="create_update" href="{% url 'blog:article_update' article_slug=article.article_slug %}"><h3>{% trans 'Змінити статтю?' %}</h3></a>
+                <a class="create_update"
+                   href="{% url 'blog:article_update' item_slug=article.article_category.menu_category.menu_name category_slug=article.article_category.category_name article_slug=article.article_slug %}"><h3>{% trans 'Змінити статтю?' %}</h3></a>
             </div>
             <div class="col-md-3 pull-right">
-                <a class="create_update" href="{% url 'blog:article_delete' article_slug=article.article_slug %}"><h3>{% trans 'Видалити статтю?' %}</h3></a>
+                <a class="create_update" href="{% url 'blog:article_delete' item_slug=article.article_category.menu_category.menu_name category_slug=article.article_category.category_name article_slug=article.article_slug %}"><h3>{% trans 'Видалити статтю?' %}</h3></a>
             </div>
         </div>
     {% endif %}
 
     <!-- gallery_work -->
     <div id="work_3d_max">
-        <img class="img-responsive img-thumbnail" src="{{article.article_image.url}}" alt="{{ article.article_title }}"/>
-         <div class="image_title article">
+        {% if article.article_image %}
+            <img class="img-responsive img-thumbnail" src="{{article.article_image.url}}" alt="{{ article.article_title }}"/>
+        {% endif %}
+        <div class="image_title article">
             <ul class="likes">
                 <li>
                     <a href="{% url 'blog:add_like' article.id %}"><img src="{% static 'blog/like.png' %}"></a>
@@ -38,7 +41,7 @@
         <h4>{{ article.article_title }}</h4>
     </div>
     <div class="well">
-       <p>{{ article.article_text }}</p>
+        <p>{{ article.article_text }}</p>
     </div>
     {% if comments %}
         <div class="col-lg-7 col-md-7 col-sm-9 well">
@@ -57,7 +60,7 @@
     {% endif %}
     {% if user.is_authenticated %}
         <div class="col-lg-6 col-md-6 col-sm-8 article well">
-           {% comment %} <form id="form-massage" class="form-row" action="{% url 'gallery_work' article.id %}" method="POST">
+            {% comment %} <form id="form-massage" class="form-row" action="{% url 'gallery_work' article.id %}" method="POST">
                 <fieldset>
                     <div class="form-group">
                         {% csrf_token %}
@@ -83,7 +86,7 @@
             </form>
 
 
-       {% comment %} <form id="form-massage" class="form-row" action="{% url 'gallery_work' article.id %}" method="POST">
+            {% comment %} <form id="form-massage" class="form-row" action="{% url 'gallery_work' article.id %}" method="POST">
             <fieldset>
                 <div class="form-group">
                     <label for="{{ form.comments_text.id_for_label }}" class="control-label">{{ form.comments_text.label }}</label>
@@ -100,29 +103,29 @@
         </div>
 
     {% endif %}
-{#    <div id="pagination" class="row">#}
-{#        <ul class="pagination">#}
-{#            {% if comments.has_other_pages %}#}
-{#                {% if comments.has_previous %}#}
-{#                    <li><a href="?page={{ comments.previous_page_number }}">&laquo;</a></li>#}
-{#                {% else %}#}
-{#                    <li class="disabled"><a href="">&laquo;</a></li>#}
-{#                {% endif %}#}
-{#                {% for page in comments.paginator.page_range %}#}
-{#                    {% if page == comments.number %}#}
-{#                        <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>#}
-{#                    {% else %}#}
-{#                        <li><a href="?page={{ page }}">{{ page }}</a></li>#}
-{#                    {% endif%}#}
-{#                {% endfor %}#}
-{#                {% if comments.has_next %}#}
-{#                    <li><a href="?page={{ comments.next_page_number }}">&raquo</a></li>#}
-{#                {% else %}#}
-{#                    <li class="disabled"><a href="">&raquo</a></li>#}
-{#                {% endif %}#}
-{#            {% endif %}#}
-{#        </ul>#}
-{#    </div>#}
+    {#    <div id="pagination" class="row">#}
+    {#        <ul class="pagination">#}
+    {#            {% if comments.has_other_pages %}#}
+    {#                {% if comments.has_previous %}#}
+    {#                    <li><a href="?page={{ comments.previous_page_number }}">&laquo;</a></li>#}
+    {#                {% else %}#}
+    {#                    <li class="disabled"><a href="">&laquo;</a></li>#}
+    {#                {% endif %}#}
+    {#                {% for page in comments.paginator.page_range %}#}
+    {#                    {% if page == comments.number %}#}
+    {#                        <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>#}
+    {#                    {% else %}#}
+    {#                        <li><a href="?page={{ page }}">{{ page }}</a></li>#}
+    {#                    {% endif%}#}
+    {#                {% endfor %}#}
+    {#                {% if comments.has_next %}#}
+    {#                    <li><a href="?page={{ comments.next_page_number }}">&raquo</a></li>#}
+    {#                {% else %}#}
+    {#                    <li class="disabled"><a href="">&raquo</a></li>#}
+    {#                {% endif %}#}
+    {#            {% endif %}#}
+    {#        </ul>#}
+    {#    </div>#}
     {% if comments.has_other_pages %}
         <div id="pagination" class="col-lg-10  col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
             <ul class="pager">

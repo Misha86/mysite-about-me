@@ -24,7 +24,7 @@ class ArticleForm(forms.ModelForm):
         model = Article
         fields = ['article_title',
                   'article_text',
-                  'article_category',
+                  # 'article_category',
                   'article_tag',
                   'article_image']
 
@@ -32,5 +32,5 @@ class ArticleForm(forms.ModelForm):
                                                            'placeholder': _('введіть назва статті')}),
                    'article_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4,
                                                          'placeholder': _("введіть текст статті")}),
-                   'article_category': forms.Select(attrs={'class': 'form-control', 'rows': 4}),
+                   # 'article_category': forms.Select(attrs={'class': 'form-control', 'rows': 4}),
                    'article_tag': forms.SelectMultiple(attrs={'class': 'form-control', 'rows': 4})}

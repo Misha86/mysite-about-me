@@ -25,7 +25,7 @@
                             <ul class="dropdown-menu">
                                 {% for category in item.categories.all  %}
                                         <li><a {% if '/' in  category.category_url %} href={{ category.category_url }}
-                                                {% else %} href={% url category.category_url category_slug=category.category_name %}{% endif %}>
+                                                {% else %} href={% url category.category_url item_slug=category.menu_category.menu_name category_slug=category.category_name %}{% endif %}>
                                             {{ category.category_title }} </a></li>
                                 {% endfor %}
                             </ul>
