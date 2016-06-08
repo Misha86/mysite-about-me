@@ -15,11 +15,11 @@
                 {% for item in menu %}
                     {% if item.menu_type == 'single' and item.menu_url != path %}
                         <li><a {% if '/' in  item.menu_url %}href={{ item.menu_url }}
-                                   {% else %}href={% url item.menu_url %}{% endif %}>{{ item.menu_title }}</a></li>
+                                   {% else %}href={% url item.menu_url item.menu_name %}{% endif %}>{{ item.menu_title }}</a></li>
                     {% elif item.menu_type == 'single' and item.menu_url == path %}
                         <li class="active"><a {% if '/' in  item.menu_url %}href={{ item.menu_url }}
-                                                  {% else %}href={% url item.menu_url %}{% endif %}>{{ item.menu_title }}</a></li>
-                    {% elif item.menu_type == 'dropdown'%}
+                                                  {% else %}href={% url item.menu_url item.menu_name %}{% endif %}>{{ item.menu_title }}</a></li>
+                    {% elif item.menu_type == 'dropdown' %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ item.menu_title }}<b class="caret"></b></a>
                             <ul class="dropdown-menu">

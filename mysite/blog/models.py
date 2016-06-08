@@ -36,7 +36,7 @@ class Tag(models.Model):
 class Article(models.Model):
     article_user = models.ForeignKey(Profile, related_name="articles", verbose_name=_("Автор статті"))
     article_title = models.CharField(max_length=50, verbose_name=_("Назва статті"))
-    article_text = models.TextField(verbose_name=_("Текст статті"))
+    article_text = models.TextField(max_length=1000, verbose_name=_("Текст статті"))
     article_category = models.ForeignKey(Category, related_name="articles", verbose_name=_("Категорія"),
                                          on_delete=models.CASCADE)
     article_tag = models.ManyToManyField(Tag, related_name="articles", verbose_name=_("Тегі"))

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 
 class MenuItem(models.Model):
@@ -36,3 +37,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_title
+
+    def get_absolute_url(self):
+        return reverse('blog:article_list', kwargs={'item_slug': self.menu_category.menu_name,
+                                                    'category_slug': self.category_name})

@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from blog.models import Article
-from navigation.models import Category
+from navigation.models import Category, MenuItem
 from blog.form import SendMassageForm, ArticleForm
 from comment.forms import CommentForm
 from django.core.exceptions import ObjectDoesNotExist
@@ -13,6 +13,7 @@ from loginsys.models import Profile
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.forms.models import modelformset_factory, inlineformset_factory
 
 
 def start_page(request):
@@ -37,22 +38,59 @@ def start_page(request):
     return render(request, 'content_start_page.html', context)
 
 
-def article_create(request, item_slug, category_slug):
+def articles_list_update(request, item_slug, category_slug=None):
     if not request.user.is_superuser:
         raise Http404
-    title = 'Форма для створення статті'
-    button_create = 'створити статтю'
+    ArticleFormSet = inlineformset_factory(Category, Article, form=ArticleForm, extra=1, can_delete=True)
+    category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
+    if request.POST:
+        forms = ArticleFormSet(request.POST, request.FILES, instance=category)
+        if forms.is_valid():
+            instances = forms.save(commit=False)
+            for form in forms.deleted_objects:
+                form.delete()
+            for instance in instances:
+                instance.article_user = get_object_or_404(Profile, user=request.user)
+                instance.article_category = get_object_or_404(Category,  menu_category__menu_name=item_slug,
+                                                              category_name=category_slug)
+                instance.save()
+            forms.save_m2m()
+            messages.success(request, "Список категорії \'" + category.category_title + "\' змінений успішно!",
+                             extra_tags='success')
+            return HttpResponseRedirect(category.get_absolute_url())               # you can use return redirect(instance)
+    else:
+        forms = ArticleFormSet(instance=category)
+
+    title = 'Форма для зміни списку статей'
+    button_create = 'змінити список'
     button_cancel = 'відміна'
-    return_path = '/'
+    return_path = category.get_absolute_url()
+    context = {
+        'title': title,
+        'button_create': button_create,
+        'button_cancel': button_cancel,
+        'forms': forms,
+        'return_path': return_path,
+        }
+    return render(request, 'articles_list_update.html', context)
+
+
+def article_create(request, item_slug, category_slug=None):
+    if not request.user.is_superuser:
+        raise Http404
     form = ArticleForm(request.POST or None, request.FILES or None)
+    category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.article_user = get_object_or_404(Profile, user=request.user)
-        instance.article_category = get_object_or_404(Category,  menu_category__menu_name=item_slug,
-                                                      category_name=category_slug)
+        instance.article_category = category
         instance.save()
         messages.success(request, "Ура, стаття сворена!", extra_tags='success')
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect(instance.get_absolute_url())               # you can use return redirect(instance)
+    title = 'Форма для створення статті'
+    button_create = 'створити статтю'
+    button_cancel = 'відміна'
+    return_path = category.get_absolute_url()
     context = {
         'title': title,
         'button_create': button_create,
@@ -79,7 +117,7 @@ def article_update(request, item_slug, category_slug, article_slug):
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Ура, стаття оновлена!", extra_tags='success')
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return redirect(instance)
     return_path = instance.get_absolute_url()
     context = {
         'title': title,
@@ -108,8 +146,7 @@ def article_delete(request, item_slug, category_slug, article_slug):
     if request.POST:
         instance.delete()
         messages.error(request, 'Стаття ' + '\'' + instance.article_title + '\'' + ' видалена!', extra_tags='success')
-        return redirect(reverse('blog:article_list', kwargs={'category_slug': instance.article_category.category_name,
-                                                             'item_slug': instance.article_category.menu_category.menu_name}))
+        return redirect(instance.article_category.get_absolute_url())
     return render(request, 'article_delete_form.html', context)
 
 
@@ -191,34 +228,38 @@ def article_detail(request, item_slug, category_slug, article_slug):
 
 
 def add_like(request, id=None):
+    article = get_object_or_404(Article, id=id)
     try:
         if id in request.COOKIES:
             return_path = request.META.get('HTTP_REFERER', '/')
+            messages.error(request, "Ви вже оцінили картинку \'" + article.article_title + "\' !", extra_tags='error')
             return redirect(return_path)
         else:
-            article = Article.objects.get(id=id)
             article.article_likes += 1
             article.save()
-            redirect_path = request.META.get('HTTP_REFERER', '/')
-            response = redirect(redirect_path)
+            return_path = request.META.get('HTTP_REFERER', '/')
+            response = redirect(return_path)
             response.set_cookie(id, 'test')
+            messages.error(request, "Дякую за Вашу оцінку картинки \'" + article.article_title + "\' !",
+                           extra_tags='success')
             return response
     except ObjectDoesNotExist:
         raise Http404
     return redirect('/')
 
 
-def blog_3d_max(request):
-    blog_3d_max = {}
-    return render(request, 'blog_3d_max.html', blog_3d_max)
-
-
 def proposals(request):
     pass
 
 
-def photo(request):
-    pass
+def photo(request, item_slug):
+    menu_item = get_object_or_404(MenuItem,  menu_name=item_slug)
+    photo_list = Article.objects.filter(article_category__menu_category__menu_name=item_slug).order_by('-article_date')
+
+    return render(request, 'photo_list.html', locals())
+
+
+
 
 
 def django_python(request):
