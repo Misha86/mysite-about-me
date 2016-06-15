@@ -1,10 +1,14 @@
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 
+
 app_name = 'blog'
 
 
 urlpatterns = [
+    # include urls_api
+    url(r'^api/', include('blog.class_based.urls')),
+
     url(r'^$', 'blog.views.start_page', name='start_page'),
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/$', 'blog.views.article_list', name='article_list'),
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/update/$', 'blog.views.articles_list_update',

@@ -71,6 +71,7 @@ if settings.DEBUG:
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [os.path.join(BASE_DIR, 'templates'),
                      os.path.join(BASE_DIR, 'blog/templates/blog'),
+                     os.path.join(BASE_DIR, 'blog/templates/blog/api'),
                      os.path.join(BASE_DIR, 'navigation/templates/navigation'),
                      os.path.join(BASE_DIR, 'languages/templates/languages')],
             'APP_DIRS': True,

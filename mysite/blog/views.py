@@ -38,118 +38,6 @@ def start_page(request):
     return render(request, 'content_start_page.html', context)
 
 
-def articles_list_update(request, item_slug, category_slug=None):
-    if not request.user.is_superuser:
-        raise Http404
-    ArticleFormSet = inlineformset_factory(Category, Article, form=ArticleForm, extra=1, can_delete=True)
-    category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
-    if request.POST:
-        forms = ArticleFormSet(request.POST, request.FILES, instance=category)
-        if forms.is_valid():
-            instances = forms.save(commit=False)
-            for form in forms.deleted_objects:
-                form.delete()
-            for instance in instances:
-                instance.article_user = get_object_or_404(Profile, user=request.user)
-                instance.article_category = get_object_or_404(Category,  menu_category__menu_name=item_slug,
-                                                              category_name=category_slug)
-                instance.save()
-            forms.save_m2m()
-            messages.success(request, "Список категорії \'" + category.category_title + "\' змінений успішно!",
-                             extra_tags='success')
-            return HttpResponseRedirect(category.get_absolute_url())               # you can use return redirect(instance)
-    else:
-        forms = ArticleFormSet(instance=category)
-
-    title = 'Форма для зміни списку статей'
-    button_create = 'змінити список'
-    button_cancel = 'відміна'
-    return_path = category.get_absolute_url()
-    context = {
-        'title': title,
-        'button_create': button_create,
-        'button_cancel': button_cancel,
-        'forms': forms,
-        'return_path': return_path,
-        }
-    return render(request, 'articles_list_update.html', context)
-
-
-def article_create(request, item_slug, category_slug=None):
-    if not request.user.is_superuser:
-        raise Http404
-    form = ArticleForm(request.POST or None, request.FILES or None)
-    category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.article_user = get_object_or_404(Profile, user=request.user)
-        instance.article_category = category
-        instance.save()
-        messages.success(request, "Ура, стаття сворена!", extra_tags='success')
-        return HttpResponseRedirect(instance.get_absolute_url())               # you can use return redirect(instance)
-    title = 'Форма для створення статті'
-    button_create = 'створити статтю'
-    button_cancel = 'відміна'
-    return_path = category.get_absolute_url()
-    context = {
-        'title': title,
-        'button_create': button_create,
-        'button_cancel': button_cancel,
-        'form': form,
-        'return_path': return_path,
-        }
-    return render(request, 'article_form.html', context)
-
-
-def article_update(request, item_slug, category_slug, article_slug):
-    if not request.user.is_staff or not request.user.is_superuser:
-        # response = HttpResponse('<h1>Ти не маєш прав для оновлення статті!!!</h1')
-        # response.status_code = 403
-        # return response
-        raise Http404
-    title = 'Форма оновлення статті'
-    button_create = 'змінити статтю'
-    button_cancel = 'відміна'
-    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
-                                 article_category__category_name=category_slug, article_slug=article_slug)
-    form = ArticleForm(request.POST or None, request.FILES or None, instance=instance)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request, "Ура, стаття оновлена!", extra_tags='success')
-        return redirect(instance)
-    return_path = instance.get_absolute_url()
-    context = {
-        'title': title,
-        'button_create': button_create,
-        'button_cancel': button_cancel,
-        'return_path': return_path,
-        'form': form,
-        'article': instance,
-        }
-    return render(request, 'article_form.html', context)
-
-
-def article_delete(request, item_slug, category_slug, article_slug):
-    title = 'Ви впевнені, що хочете видалити дану статтю?'
-    button_delete = 'видалити статтю'
-    button_cancel = 'відміна'
-    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
-                                 article_category__category_name=category_slug, article_slug=article_slug)
-    return_path = instance.get_absolute_url()
-    context = {
-        'title': title,
-        'button_delete': button_delete,
-        'button_cancel': button_cancel,
-        'return_path': return_path,
-        }
-    if request.POST:
-        instance.delete()
-        messages.error(request, 'Стаття ' + '\'' + instance.article_title + '\'' + ' видалена!', extra_tags='success')
-        return redirect(instance.article_category.get_absolute_url())
-    return render(request, 'article_delete_form.html', context)
-
-
 def article_list(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
     articles_list = Article.objects.filter(article_category__category_name=category_slug,
@@ -199,6 +87,43 @@ def article_list(request, item_slug, category_slug):
     return render(request, 'gallery_works.html', locals())
 
 
+def articles_list_update(request, item_slug, category_slug=None):
+    if not request.user.is_superuser:
+        raise Http404
+    ArticleFormSet = inlineformset_factory(Category, Article, form=ArticleForm, extra=1, can_delete=True)
+    category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
+    if request.POST:
+        forms = ArticleFormSet(request.POST, request.FILES, instance=category)
+        if forms.is_valid():
+            instances = forms.save(commit=False)
+            for form in forms.deleted_objects:
+                form.delete()
+            for instance in instances:
+                instance.article_user = get_object_or_404(Profile, user=request.user)
+                instance.article_category = get_object_or_404(Category,  menu_category__menu_name=item_slug,
+                                                              category_name=category_slug)
+                instance.save()
+            forms.save_m2m()
+            messages.success(request, _("Список категорії \'") + category.category_title + _("\' змінений успішно!"),
+                             extra_tags='success')
+            return HttpResponseRedirect(category.get_absolute_url())               # you can use return redirect(instance)
+    else:
+        forms = ArticleFormSet(instance=category)
+
+    title = _('Форма для зміни списку статей')
+    button_create = _('змінити список')
+    button_cancel = _('відміна')
+    return_path = category.get_absolute_url()
+    context = {
+        'title': title,
+        'button_create': button_create,
+        'button_cancel': button_cancel,
+        'forms': forms,
+        'return_path': return_path,
+        }
+    return render(request, 'articles_list_update.html', context)
+
+
 def article_detail(request, item_slug, category_slug, article_slug):
     category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
     article = category.articles.get(article_slug=article_slug)
@@ -207,7 +132,7 @@ def article_detail(request, item_slug, category_slug, article_slug):
     page_number = request.GET.get('page', 1)
     form = CommentForm(auto_id='id_for_%s', label_suffix=' -> -> -> ->')
     if request.POST and 'pause' in request.session:
-        messages.error(request, 'Ви вже залишили коментар, зачекайте хвилину.', extra_tags='error')
+        messages.error(request, _('Ви вже залишили коментар, зачекайте хвилину.'), extra_tags='error')
     elif request.POST and 'pause' not in request.session:
         form = CommentForm(request.POST)
         if form.is_valid() and request.user.is_authenticated():
@@ -217,7 +142,7 @@ def article_detail(request, item_slug, category_slug, article_slug):
             comment.save()
             request.session.set_expiry(60)
             request.session['pause'] = True
-            messages.success(request, 'Коментар добавлений успішно!', extra_tags='success')
+            messages.success(request, _('Коментар добавлений успішно!'), extra_tags='success')
             return redirect(article.get_absolute_url())
     context = {
         'comments': current_page.page(page_number),
@@ -227,12 +152,87 @@ def article_detail(request, item_slug, category_slug, article_slug):
     return render(request, 'gallery_work.html', context)
 
 
+def article_create(request, item_slug, category_slug=None):
+    if not request.user.is_superuser:
+        raise Http404
+    form = ArticleForm(request.POST or None, request.FILES or None)
+    category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.article_user = get_object_or_404(Profile, user=request.user)
+        instance.article_category = category
+        instance.save()
+        messages.success(request, _("Ура, стаття сворена!"), extra_tags='success')
+        return HttpResponseRedirect(instance.get_absolute_url())               # you can use return redirect(instance)
+    title = _('Форма для створення статті')
+    button_create = _('створити статтю')
+    button_cancel = _('відміна')
+    return_path = category.get_absolute_url()
+    context = {
+        'title': title,
+        'button_create': button_create,
+        'button_cancel': button_cancel,
+        'form': form,
+        'return_path': return_path,
+        }
+    return render(request, 'article_form.html', context)
+
+
+def article_update(request, item_slug, category_slug, article_slug):
+    if not request.user.is_staff or not request.user.is_superuser:
+        # response = HttpResponse('<h1>Ти не маєш прав для оновлення статті!!!</h1')
+        # response.status_code = 403
+        # return response
+        raise Http404
+    title = _('Форма оновлення статті')
+    button_create = _('змінити статтю')
+    button_cancel = _('відміна')
+    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
+                                 article_category__category_name=category_slug, article_slug=article_slug)
+    form = ArticleForm(request.POST or None, request.FILES or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, _("Ура, стаття оновлена!"), extra_tags='success')
+        return redirect(instance)
+    return_path = instance.get_absolute_url()
+    context = {
+        'title': title,
+        'button_create': button_create,
+        'button_cancel': button_cancel,
+        'return_path': return_path,
+        'form': form,
+        'article': instance,
+        }
+    return render(request, 'article_form.html', context)
+
+
+def article_delete(request, item_slug, category_slug, article_slug):
+    title = _('Ви впевнені, що хочете видалити дану статтю?')
+    button_delete = _('видалити статтю')
+    button_cancel = _('відміна')
+    instance = get_object_or_404(Article, article_category__menu_category__menu_name=item_slug,
+                                 article_category__category_name=category_slug, article_slug=article_slug)
+    return_path = instance.get_absolute_url()
+    context = {
+        'title': title,
+        'button_delete': button_delete,
+        'button_cancel': button_cancel,
+        'return_path': return_path,
+        }
+    if request.POST:
+        instance.delete()
+        messages.error(request, _('Стаття \'') + instance.article_title + _('\' видалена!'), extra_tags='success')
+        return redirect(instance.article_category.get_absolute_url())
+    return render(request, 'article_delete_form.html', context)
+
+
 def add_like(request, id=None):
     article = get_object_or_404(Article, id=id)
     try:
         if id in request.COOKIES:
             return_path = request.META.get('HTTP_REFERER', '/')
-            messages.error(request, "Ви вже оцінили картинку \'" + article.article_title + "\' !", extra_tags='error')
+            messages.error(request, _("Ви вже оцінили картинку \'") + article.article_title + "\' !", extra_tags='error')
             return redirect(return_path)
         else:
             article.article_likes += 1
@@ -240,7 +240,7 @@ def add_like(request, id=None):
             return_path = request.META.get('HTTP_REFERER', '/')
             response = redirect(return_path)
             response.set_cookie(id, 'test')
-            messages.error(request, "Дякую за Вашу оцінку картинки \'" + article.article_title + "\' !",
+            messages.error(request, _("Дякую за Вашу оцінку картинки \'") + article.article_title + "\' !",
                            extra_tags='success')
             return response
     except ObjectDoesNotExist:

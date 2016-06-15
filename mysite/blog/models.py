@@ -55,6 +55,12 @@ class Article(models.Model):
     def __str__(self):
         return self.article_title
 
+    def get_image(self):
+        if not self.article_image:
+            return False
+        else:
+            return True
+
     def get_absolute_url(self):
         return reverse('blog:article_detail', kwargs={'item_slug': self.article_category.menu_category.menu_name,
                                                       'category_slug': self.article_category.category_name,
