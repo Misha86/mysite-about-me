@@ -73,7 +73,9 @@ if settings.DEBUG:
                      os.path.join(BASE_DIR, 'blog/templates/blog'),
                      os.path.join(BASE_DIR, 'blog/templates/blog/api'),
                      os.path.join(BASE_DIR, 'navigation/templates/navigation'),
-                     os.path.join(BASE_DIR, 'languages/templates/languages')],
+                     os.path.join(BASE_DIR, 'languages/templates/languages'),
+                     os.path.join(BASE_DIR, 'loginsys/templates'),
+                     os.path.join(BASE_DIR, 'loginsys/templates/registration')],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [

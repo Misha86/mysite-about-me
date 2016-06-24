@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, redirect, render
+from django.shortcuts import render_to_response, redirect, render, get_object_or_404
 from django.contrib import auth
 from django.core.context_processors import csrf
 from loginsys.models import Profile
@@ -8,8 +8,11 @@ from django.contrib import messages
 
 def login(request):
     args = {}
+    args.update(csrf(request))
     path = request.META.get('HTTP_REFERER', '/')
-    if path == request.build_absolute_uri():
+    if 'next' in request.GET:
+        return_path = request.GET['my_redirect_field']
+    elif path == request.build_absolute_uri():
         return_path = '/'
     else:
         return_path = path
@@ -47,6 +50,8 @@ def logout(request):
 
 
 def register(request):
+    title = 'Форма для реєстрації'
+    button_create = 'Зареєструватися'
     path = request.META.get('HTTP_REFERER', '/')
     if path == request.build_absolute_uri():
         return_path = '/'
@@ -69,8 +74,43 @@ def register(request):
         else:
             form = form
     context = {
+        'title': title,
+        'button_create': button_create,
         'form': form,
         'return_path': return_path,
+    }
+    return render(request, 'register.html', context)
+
+
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
+
+
+def update(request):
+    path = request.META.get('HTTP_REFERER', '/')
+    if path == request.build_absolute_uri():
+        return_path = '/'
+    else:
+        return_path = path
+    instance = get_object_or_404(User, username=request.user)
+    form = ProfileCreationForm(request.POST or None, request.FILES or None, instance=instance,
+                               initial={'sex': instance.profile.sex, 'avatar': instance.profile.avatar})
+    title = 'Форма для зміни профіля \'' + str(instance.get_full_name() + '\'')
+    button_update = 'Змінити'
+    if form.is_valid():
+        form.save()
+        update_session_auth_hash(request, form.instance)
+        messages.success(request, 'Ви змінили свій профіль, ' + instance.username + '!',
+                         extra_tags='success')
+        return redirect(return_path)
+    else:
+        form = form
+    context = {
+        'title': title,
+        'button_create': button_update,
+        'form': form,
+        'return_path': return_path,
+        'profile': instance,
     }
     return render(request, 'register.html', context)
 

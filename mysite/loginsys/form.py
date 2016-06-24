@@ -47,7 +47,13 @@ class ProfileCreationForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
+        username = self.cleaned_data.get("username", None)
+        exists_user = User.objects.filter(username=username).exists()
         email_exists = User.objects.filter(email=email).exists()
+        if username is not None and exists_user:
+            user = User.objects.get(username=username)
+            if email == user.email:
+                return email
         if not email:
             raise forms.ValidationError(_("Це поле обов'язкове."))
         elif email_exists:

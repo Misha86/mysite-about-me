@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms.models import modelformset_factory, inlineformset_factory
+from django.contrib.auth.decorators import login_required
 
 
 def start_page(request):
@@ -131,6 +132,10 @@ def article_detail(request, item_slug, category_slug, article_slug):
     current_page = Paginator(comments, 4)
     page_number = request.GET.get('page', 1)
     form = CommentForm(auto_id='id_for_%s', label_suffix=' -> -> -> ->')
+
+    # if not request.user.is_authenticated():
+    #     return redirect('/auth/login/?next=%s' % request.path)
+
     if request.POST and 'pause' in request.session:
         messages.error(request, _('Ви вже залишили коментар, зачекайте хвилину.'), extra_tags='error')
     elif request.POST and 'pause' not in request.session:
@@ -227,6 +232,7 @@ def article_delete(request, item_slug, category_slug, article_slug):
     return render(request, 'article_delete_form.html', context)
 
 
+# @login_required(redirect_field_name='my_redirect_field')
 def add_like(request, id=None):
     article = get_object_or_404(Article, id=id)
     try:

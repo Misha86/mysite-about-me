@@ -11,7 +11,7 @@
                 id="username" placeholder="введіть ім'я користувача" >
         <div class="form-group has-error">
             {% if login_error_username %}
-            <label class="control-label"><em>{{login_error_username}}</em></label>
+            <label class="control-label errorlist"><em>{{login_error_username}}</em></label>
             {% endif %}
         </div>
         <label for="password">Пароль</label>

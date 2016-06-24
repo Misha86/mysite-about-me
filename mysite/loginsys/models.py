@@ -22,7 +22,7 @@ class Profile(models.Model):
         verbose_name = _("Профіль користувача")
         verbose_name_plural = _("Профілі користувачів")
 
-    user = models.OneToOneField(User, primary_key=True, related_name="profiles", verbose_name=_("Користувач"),
+    user = models.OneToOneField(User, primary_key=True, related_name="profile", verbose_name=_("Користувач"),
                                 on_delete=models.CASCADE)
     sex = models.CharField(max_length=20, choices=(('Man', _('Чоловік')), ('Woman', _('Жінка'))),
                            verbose_name=_("Стать"))
