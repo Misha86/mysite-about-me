@@ -74,10 +74,10 @@ var xmlhttp;
 /*@cc_on @*/
 /*@if (@_jscript_version >= 5)
     try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        xmlhttp = new_profile ActiveXObject("Msxml2.XMLHTTP");
     } catch (e) {
         try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlhttp = new_profile ActiveXObject("Microsoft.XMLHTTP");
         } catch (E) {
             xmlhttp = false;
         }

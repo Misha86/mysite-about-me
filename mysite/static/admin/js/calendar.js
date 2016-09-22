@@ -42,7 +42,7 @@ depends on core.js for utility functions like removeChildren or quickElement
             // from altering the date, specifically the day field.  For example:
             //
             // ```
-            // var x = new Date('2013-10-02');
+            // var x = new_profile Date('2013-10-02');
             // var day = x.getDate();
             // ```
             //

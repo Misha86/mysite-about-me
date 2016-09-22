@@ -1,9 +1,12 @@
 from django.shortcuts import render_to_response, redirect, render, get_object_or_404
+from django.utils.translation import ugettext_lazy as _
 from django.contrib import auth
 from django.core.context_processors import csrf
 from loginsys.models import Profile
-from loginsys.form import ProfileCreationForm
+from loginsys.form import (ProfileCreationForm,
+                           ProfileUpdateForm)
 from django.contrib import messages
+from django.conf import settings
 
 
 def login(request):
@@ -22,9 +25,11 @@ def login(request):
         password = request.POST.get('password', '')
         user = auth.authenticate(username=username, password=password)
         if user is not None:
-                auth.login(request, user)
-                messages.success(request, 'Вітаю Вас на сайті, ' + username + '!', extra_tags='success')
-                return redirect(return_path)
+            last_login = user.last_login.strftime("%d-%m-%Y %H:%M:%S")
+            auth.login(request, user)
+            messages.success(request, _('Вітаю Вас на сайті, ' + username + '! Останій раз на сайті Ви були ' +
+                                        str(last_login) + '.'), extra_tags='success')
+            return redirect(return_path)
         elif not username and password:
             args['login_error_username'] = "Обов'язково введіть ім'я!"
             return render_to_response('login.html', args)
@@ -39,7 +44,9 @@ def login(request):
             args['login_error'] = 'Користувач не знайдений!'
             return render_to_response('login.html', args)
     else:
-        return render(request, 'login.html', args)
+        args['username'] = ''
+        args['password'] = ''
+    return render(request, 'login.html', args)
 
 
 def logout(request):
@@ -78,7 +85,7 @@ def register(request):
         'button_create': button_create,
         'form': form,
         'return_path': return_path,
-    }
+        }
     return render(request, 'register.html', context)
 
 
@@ -93,26 +100,64 @@ def update(request):
     else:
         return_path = path
     instance = get_object_or_404(User, username=request.user)
-    form = ProfileCreationForm(request.POST or None, request.FILES or None, instance=instance,
-                               initial={'sex': instance.profile.sex, 'avatar': instance.profile.avatar})
-    title = 'Форма для зміни профіля \'' + str(instance.get_full_name() + '\'')
-    button_update = 'Змінити'
+    form = ProfileUpdateForm(request.POST or None, request.FILES or None, instance=instance,
+                             initial={'sex': instance.profile.sex, 'avatar': instance.profile.avatar})
     if form.is_valid():
         form.save()
         update_session_auth_hash(request, form.instance)
-        messages.success(request, 'Ви змінили свій профіль, ' + instance.username + '!',
+        messages.success(request, _('Ви змінили свій профіль, ' + instance.username + '!'),
                          extra_tags='success')
         return redirect(return_path)
     else:
         form = form
+    title = _('Форма для зміни профіля \'' + str(instance.get_full_name() + '\''))
+    button_update = _('Змінити')
+    button_delete = _('Видалити')
     context = {
         'title': title,
         'button_create': button_update,
+        'button_delete': button_delete,
         'form': form,
         'return_path': return_path,
         'profile': instance,
-    }
+        }
     return render(request, 'register.html', context)
+
+
+def delete(request, id=None):
+    instance = get_object_or_404(User, id=id)
+    name = instance.get_full_name()
+    return_path = settings.LOGIN_REDIRECT_URL
+    title = _('Ви впевнені, що хочете видалити профіль \'' + name + '\' ?')
+    button_delete = _('видалити профіль')
+    button_cancel = _('відміна')
+    context = {
+        'title': title,
+        'button_delete': button_delete,
+        'button_cancel': button_cancel,
+        'return_path': return_path,
+        }
+    if request.POST:
+        instance.delete()
+        messages.success(request, _('Користувач \'' + name + '\' видалений!'), extra_tags='success')
+        return redirect(return_path)
+    return render(request, 'profile_delete_form.html', context)
+
+
+from django.contrib.contenttypes.models import ContentType
+
+def show_users(request, ct, ids):
+    model = get_object_or_404(ContentType, id=ct)
+    queryset = model.get_all_objects_for_this_type()
+    users = []
+    users_ids = ids.split(',')
+    if len(users_ids) > 1:
+        for user_id in users_ids:
+            content = queryset.get(pk=user_id)
+            users.append(content)
+    else:
+        users = queryset.get(pk=ids)
+    return render(request, 'show_user_from_admin.html', {'users': users})
 
 
 

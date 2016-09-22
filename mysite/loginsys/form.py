@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
 
 
 class ProfileCreationForm(forms.ModelForm):
@@ -8,6 +9,9 @@ class ProfileCreationForm(forms.ModelForm):
     A form that creates a user, with no privileges, from the given username and
     password.
     """
+    date_of_birth = forms.CharField(label=_("Дата народження"), required=False,
+                                    widget=forms.DateInput(attrs={'class': 'form-control',
+                                                                  'placeholder': _('дата народження')}))
     password1 = forms.CharField(label=_("Password"),
                                 widget=forms.PasswordInput(attrs={'class': 'form-control',
                                                                   'placeholder': _('введіть пароль')}))
@@ -30,19 +34,27 @@ class ProfileCreationForm(forms.ModelForm):
                                                        'placeholder': _("прізвище")}),
                    'email': forms.EmailInput(attrs={'class': 'form-control', 'rows': 4,
                                                     'placeholder': _("e-mail")},)}
+
         labels = {'username': _("Логін"),
                   'first_name': _("Ім'я"),
                   'last_name': _("Прізвище"),
                   'email': _("E-mail")}
+
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1")
+        valid_password = validate_password(password1)
+        if valid_password is not None:
+            raise valid_password.ValidationError()
+        return password1
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError(
-                self.error_messages['password_mismatch'],
+                _("Паролі не співпадають!"),
                 code='password_mismatch',
-            )
+                )
         return password2
 
     def clean_email(self):
@@ -78,3 +90,23 @@ class ProfileCreationForm(forms.ModelForm):
             user.save()
         return user
 
+
+class ProfileUpdateForm(ProfileCreationForm):
+    password = forms.CharField(label=_("Old password"),
+                               widget=forms.PasswordInput(attrs={'class': 'form-control',
+                                                                 'placeholder': _('введіть старий пароль')}))
+
+    class Meta(ProfileCreationForm.Meta):
+        model = User
+        # ProfileCreationForm.Meta.fields.insert(4, 'password')
+        # fields = ProfileCreationForm.Meta.fields
+        fields = ProfileCreationForm.Meta.fields + ['password']
+
+    def clean_password(self):
+        password = self.cleaned_data.get("password")
+        username = self.cleaned_data.get("username")
+        user = User.objects.get(username=username)
+        if user is not None and user.check_password(password):
+            return password
+        elif password is not None:
+            raise forms.ValidationError(_("Старий пароль не вірний!"))

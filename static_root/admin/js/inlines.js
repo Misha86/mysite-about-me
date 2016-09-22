@@ -47,7 +47,7 @@
             var addButton;
             if ($this.prop("tagName") === "TR") {
                 // If forms are laid out as table rows, insert the
-                // "add" button in a new table row:
+                // "add" button in a new_profile table row:
                 var numCols = this.eq(-1).children().length;
                 $parent.append('<tr class="' + options.addCssClass + '"><td colspan="' + numCols + '"><a href="javascript:void(0)">' + options.addText + "</a></tr>");
                 addButton = $parent.find("tr:last a");
@@ -79,7 +79,7 @@
                 row.find("*").each(function() {
                     updateElementIndex(this, options.prefix, totalForms.val());
                 });
-                // Insert the new form when it has been fully edited
+                // Insert the new_profile form when it has been fully edited
                 row.insertBefore($(template));
                 // Update number of total forms
                 $(totalForms).val(parseInt(totalForms.val(), 10) + 1);
@@ -136,7 +136,7 @@
         deleteCssClass: "delete-row",  // CSS class applied to the delete link
         emptyCssClass: "empty-row",    // CSS class applied to the empty row
         formCssClass: "dynamic-form",  // CSS class applied to each form in a formset
-        added: null,          // Function called each time a new form is added
+        added: null,          // Function called each time a new_profile form is added
         removed: null          // Function called each time a form is deleted
     };
 
@@ -159,8 +159,8 @@
         };
 
         var updateSelectFilter = function() {
-            // If any SelectFilter widgets are a part of the new form,
-            // instantiate a new SelectFilter instance for it.
+            // If any SelectFilter widgets are a part of the new_profile form,
+            // instantiate a new_profile SelectFilter instance for it.
             if (typeof SelectFilter !== 'undefined') {
                 $('.selectfilter').each(function(index, value) {
                     var namearr = value.name.split('-');
@@ -226,7 +226,7 @@
         };
 
         var updateSelectFilter = function() {
-            // If any SelectFilter widgets were added, instantiate a new instance.
+            // If any SelectFilter widgets were added, instantiate a new_profile instance.
             if (typeof SelectFilter !== "undefined") {
                 $(".selectfilter").each(function(index, value) {
                     var namearr = value.name.split('-');

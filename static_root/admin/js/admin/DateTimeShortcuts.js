@@ -342,7 +342,7 @@
             format = format.replace("'", "\\'");
             return ["function(y, m, d) { DateTimeShortcuts.calendarInputs[",
                    num,
-                   "].value = new Date(y, m-1, d).strftime('",
+                   "].value = new_profile Date(y, m-1, d).strftime('",
                    format,
                    "');DateTimeShortcuts.calendarInputs[",
                    num,

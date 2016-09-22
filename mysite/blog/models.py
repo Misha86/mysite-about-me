@@ -33,9 +33,16 @@ class Tag(models.Model):
         return self.tag_title
 
 
+class ArticleManager(models.Manager):
+    def get_by_natural_key(self, article_title):
+        return self.get(article_title=article_title)
+
+
 class Article(models.Model):
+    objects = ArticleManager()
+
     article_user = models.ForeignKey(Profile, related_name="articles", verbose_name=_("Автор статті"))
-    article_title = models.CharField(max_length=50, verbose_name=_("Назва статті"))
+    article_title = models.CharField(max_length=50, verbose_name=_("Назва статті"), unique=True)
     article_text = models.TextField(max_length=1000, verbose_name=_("Текст статті"))
     article_category = models.ForeignKey(Category, related_name="articles", verbose_name=_("Категорія"),
                                          on_delete=models.CASCADE)
@@ -55,6 +62,9 @@ class Article(models.Model):
     def __str__(self):
         return self.article_title
 
+    def natural_key(self):
+        return self.article_title
+
     def get_image(self):
         if not self.article_image:
             return False
@@ -69,30 +79,3 @@ class Article(models.Model):
     get_absolute_url.short_description = _('Абсолютна адреса')
 
 
-def create_slug(instance, new_slug=None):
-    slug = slugify(instance.article_title, allow_unicode=True)
-    if new_slug is not None:
-        slug = new_slug
-    qs = Article.objects.filter(article_slug=slug)
-    exists = qs.exists()
-    if exists:
-        # update slug
-        if instance in qs:
-            return slug
-        # update slug with id
-        if instance.id:
-            slug = "{}-{}".format(slug, instance.id)
-            return slug
-        # create slug with id
-        else:
-            a_id = Article.objects.all().order_by("-id").first().id + 1
-            new_slug = "{}-{}".format(slug, a_id)
-            return create_slug(instance, new_slug=new_slug)
-    return slug
-
-
-def pre_save_article_receiver(sender, instance, *args, **kwargs):
-    instance.article_slug = create_slug(instance)
-
-
-pre_save.connect(pre_save_article_receiver, sender=Article)

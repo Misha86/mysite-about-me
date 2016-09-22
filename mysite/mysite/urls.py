@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 
+from admin.my_admin import misha
+
 
 # urlpatterns = i18n_patterns(
 #     url(r'^admin/', include(admin.site.urls)),
@@ -28,13 +30,16 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
+
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^misha/', include(misha.urls)),                # My admin
+
     url(r'auth/', include('loginsys.urls', namespace='loginsys')),
     url(r'^', include('blog.urls', namespace='blog')),
     url(r'language/', include('languages.urls', namespace='language')),
     ]
 
-
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

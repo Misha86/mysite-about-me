@@ -118,10 +118,10 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	// Take an array of elements and push it onto the stack
-	// (returning the new matched element set)
+	// (returning the new_profile matched element set)
 	pushStack: function( elems ) {
 
-		// Build a new jQuery matched element set
+		// Build a new_profile jQuery matched element set
 		var ret = jQuery.merge( this.constructor(), elems );
 
 		// Add the old object onto the stack (as a reference)
@@ -285,7 +285,7 @@ jQuery.extend({
 		}
 
 		// If the function hasn't returned already, we're confident that
-		// |obj| is a plain object, created by {} or constructed with new Object
+		// |obj| is a plain object, created by {} or constructed with new_profile Object
 		return true;
 	},
 
@@ -461,7 +461,7 @@ jQuery.extend({
 			isArray = isArraylike( elems ),
 			ret = [];
 
-		// Go through the array, translating each of the items to their new values
+		// Go through the array, translating each of the items to their new_profile values
 		if ( isArray ) {
 			for ( ; i < length; i++ ) {
 				value = callback( elems[ i ], i, arg );
@@ -1509,7 +1509,7 @@ getText = Sizzle.getText = function( elem ) {
 		}
 	} else if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {
 		// Use textContent for elements
-		// innerText usage removed for consistency of new lines (jQuery #11153)
+		// innerText usage removed for consistency of new_profile lines (jQuery #11153)
 		if ( typeof elem.textContent === "string" ) {
 			return elem.textContent;
 		} else {
@@ -2005,7 +2005,7 @@ for ( i in { submit: true, reset: true } ) {
 	Expr.pseudos[ i ] = createButtonPseudo( i );
 }
 
-// Easy API for creating new setFilters
+// Easy API for creating new_profile setFilters
 function setFilters() {}
 setFilters.prototype = Expr.filters = Expr.pseudos;
 Expr.setFilters = new setFilters();
@@ -3535,7 +3535,7 @@ jQuery.acceptData = function( owner ) {
 function Data() {
 	// Support: Android<4,
 	// Old WebKit does not have Object.preventExtensions/freeze method,
-	// return new empty object instead with no [[set]] accessor
+	// return new_profile empty object instead with no [[set]] accessor
 	Object.defineProperty( this.cache = {}, 0, {
 		get: function() {
 			return {};
@@ -4666,7 +4666,7 @@ jQuery.removeEvent = function( elem, type, handle ) {
 };
 
 jQuery.Event = function( src, props ) {
-	// Allow instantiation without the 'new' keyword
+	// Allow instantiation without the 'new_profile' keyword
 	if ( !(this instanceof jQuery.Event) ) {
 		return new jQuery.Event( src, props );
 	}
@@ -5338,7 +5338,7 @@ jQuery.fn.extend({
 	replaceWith: function() {
 		var arg = arguments[ 0 ];
 
-		// Make the changes, replacing each context element with the new content
+		// Make the changes, replacing each context element with the new_profile content
 		this.domManip( arguments, function( elem ) {
 			arg = this.parentNode;
 
@@ -5349,7 +5349,7 @@ jQuery.fn.extend({
 			}
 		});
 
-		// Force removal if there was no new content (e.g., from empty arguments)
+		// Force removal if there was no new_profile content (e.g., from empty arguments)
 		return arg && (arg.length || arg.nodeType) ? this : this.remove();
 	},
 
@@ -5516,7 +5516,7 @@ function defaultDisplay( nodeName ) {
 			// Use the already-created iframe if possible
 			iframe = (iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" )).appendTo( doc.documentElement );
 
-			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
+			// Always write a new_profile HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = iframe[ 0 ].contentDocument;
 
 			// Support: IE
@@ -5579,7 +5579,7 @@ function curCSS( elem, name, computed ) {
 			minWidth = style.minWidth;
 			maxWidth = style.maxWidth;
 
-			// Put in the new values to get a computed value out
+			// Put in the new_profile values to get a computed value out
 			style.minWidth = style.maxWidth = style.width = ret;
 			ret = computed.width;
 
@@ -5710,7 +5710,7 @@ jQuery.swap = function( elem, options, callback, args ) {
 	var ret, name,
 		old = {};
 
-	// Remember the old values, and insert the new ones
+	// Remember the old values, and insert the new_profile ones
 	for ( name in options ) {
 		old[ name ] = elem.style[ name ];
 		elem.style[ name ] = options[ name ];
@@ -7995,7 +7995,7 @@ jQuery.extend({
 					if ( map ) {
 						if ( state < 2 ) {
 							for ( code in map ) {
-								// Lazy-add the new callback in a way that preserves old ones
+								// Lazy-add the new_profile callback in a way that preserves old ones
 								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
 						} else {
@@ -8062,7 +8062,7 @@ jQuery.extend({
 		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
 		fireGlobals = jQuery.event && s.global;
 
-		// Watch for a new set of requests
+		// Watch for a new_profile set of requests
 		if ( fireGlobals && jQuery.active++ === 0 ) {
 			jQuery.event.trigger("ajaxStart");
 		}

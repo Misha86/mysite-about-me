@@ -29,7 +29,7 @@
  * using minErr('namespace') . Error codes, namespaces and template strings
  * should all be static strings, not variables or general expressions.
  *
- * @param {string} module The namespace to use for the new minErr instance.
+ * @param {string} module The namespace to use for the new_profile minErr instance.
  * @param {function} ErrorConstructor Custom error constructor to be instantiated when returning
  *   error from returned function, for cases when a particular type of error is useful.
  * @returns {function(code:string, template:string, ...templateArgs): Error} minErr instance
@@ -1871,7 +1871,7 @@ function getter(obj, path, bindFnToScope) {
  * @returns {Array} the inputted object or a jqLite collection containing the nodes
  */
 function getBlockNodes(nodes) {
-  // TODO(perf): update `nodes` instead of creating a new object?
+  // TODO(perf): update `nodes` instead of creating a new_profile object?
   var node = nodes[0];
   var endNode = nodes[nodes.length - 1];
   var blockNodes;
@@ -1890,7 +1890,7 @@ function getBlockNodes(nodes) {
 
 
 /**
- * Creates a new object without a prototype. This object is useful for lookup without having to
+ * Creates a new_profile object without a prototype. This object is useful for lookup without having to
  * guard against prototypically inherited properties via hasOwnProperty.
  *
  * Related micro-benchmarks:
@@ -1950,7 +1950,7 @@ function setupModuleLoader(window) {
      * registered using this mechanism.
      *
      * Passing one argument retrieves an existing {@link angular.Module},
-     * whereas passing more than one argument creates a new {@link angular.Module}
+     * whereas passing more than one argument creates a new_profile {@link angular.Module}
      *
      *
      * # Module
@@ -1959,10 +1959,10 @@ function setupModuleLoader(window) {
      * `angular.module` is used to configure the {@link auto.$injector $injector}.
      *
      * ```js
-     * // Create a new module
+     * // Create a new_profile module
      * var myModule = angular.module('myModule', []);
      *
-     * // register a new service
+     * // register a new_profile service
      * myModule.value('appName', 'MyCoolApp');
      *
      * // configure existing services inside initialization blocks.
@@ -1983,11 +1983,11 @@ function setupModuleLoader(window) {
      * {@link angular.bootstrap} to simplify this process for you.
      *
      * @param {!string} name The name of the module to create or retrieve.
-     * @param {!Array.<string>=} requires If specified then new module is being created. If
+     * @param {!Array.<string>=} requires If specified then new_profile module is being created. If
      *        unspecified then the module is being retrieved for further configuration.
      * @param {Function=} configFn Optional configuration function for the module. Same as
      *        {@link angular.Module#config Module#config()}.
-     * @returns {module} new module with the {@link angular.Module} api.
+     * @returns {module} new_profile module with the {@link angular.Module} api.
      */
     return function module(name, requires, configFn) {
       var assertNotHasOwnProperty = function(name, context) {
@@ -2052,7 +2052,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#provider
            * @module ng
            * @param {string} name service name
-           * @param {Function} providerType Construction function for creating new instance of the
+           * @param {Function} providerType Construction function for creating new_profile instance of the
            *                                service.
            * @description
            * See {@link auto.$provide#provider $provide.provider()}.
@@ -2064,7 +2064,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#factory
            * @module ng
            * @param {string} name service name
-           * @param {Function} providerFunction Function for creating new instance of the service.
+           * @param {Function} providerFunction Function for creating new_profile instance of the service.
            * @description
            * See {@link auto.$provide#factory $provide.factory()}.
            */
@@ -2121,7 +2121,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#animation
            * @module ng
            * @param {string} name animation name
-           * @param {Function} animationFactory Factory function for creating new instance of an
+           * @param {Function} animationFactory Factory function for creating new_profile instance of an
            *                                    animation.
            * @description
            *
@@ -2155,7 +2155,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#filter
            * @module ng
            * @param {string} name Filter name - this must be a valid angular expression identifier
-           * @param {Function} filterFactory Factory function for creating new instance of filter.
+           * @param {Function} filterFactory Factory function for creating new_profile instance of filter.
            * @description
            * See {@link ng.$filterProvider#register $filterProvider.register()}.
            *
@@ -2186,7 +2186,7 @@ function setupModuleLoader(window) {
            * @module ng
            * @param {string|Object} name Directive name, or an object map of directives where the
            *    keys are the names and the values are the factories.
-           * @param {Function} directiveFactory Factory function for creating new instance of
+           * @param {Function} directiveFactory Factory function for creating new_profile instance of
            * directives.
            * @description
            * See {@link ng.$compileProvider#directive $compileProvider.directive()}.
@@ -2644,7 +2644,7 @@ function publishExternalAPI(angular) {
  *   element or its parent. Requires {@link guide/production#disabling-debug-data Debug Data} to
  *   be enabled.
  * - `isolateScope()` - retrieves an isolate {@link ng.$rootScope.Scope scope} if one is attached directly to the
- *   current element. This getter should be used only on elements that contain a directive which starts a new isolate
+ *   current element. This getter should be used only on elements that contain a directive which starts a new_profile isolate
  *   scope. Calling `scope()` on this element always returns the original non-isolate scope.
  *   Requires {@link guide/production#disabling-debug-data Debug Data} to be enabled.
  * - `inheritedData()` - same as `data()`, but walks up the DOM until a value is found or the top
@@ -3734,7 +3734,7 @@ var $$HashMapProvider = [function() {
  * *This is fairly rare but could be the case if a third party library is injecting the
  * markup.*
  *
- * In the following example a new block of HTML containing a `ng-controller`
+ * In the following example a new_profile block of HTML containing a `ng-controller`
  * directive is added to the end of the document body by JQuery. We then compile and link
  * it into the current AngularJS scope.
  *
@@ -3909,14 +3909,14 @@ function annotate(fn, strictDi, name) {
  * @ngdoc method
  * @name $injector#instantiate
  * @description
- * Create a new instance of JS type. The method takes a constructor function, invokes the new
+ * Create a new_profile instance of JS type. The method takes a constructor function, invokes the new_profile
  * operator, and supplies all of the arguments to the constructor function as specified by the
  * constructor annotation.
  *
  * @param {Function} Type Annotated constructor function.
  * @param {Object=} locals Optional object. If preset then any argument names are read from this
  * object first, before the `$injector` is consulted.
- * @returns {Object} new instance of `Type`.
+ * @returns {Object} new_profile instance of `Type`.
  */
 
 /**
@@ -4041,7 +4041,7 @@ function annotate(fn, strictDi, name) {
  *     given factory function.
  * * {@link auto.$provide#service service(class)} - registers a **constructor function**, `class`
  *     that will be wrapped in a **service provider** object, whose `$get` property will instantiate
- *      a new object using the given constructor function.
+ *      a new_profile object using the given constructor function.
  *
  * See the individual methods for more information and examples.
  */
@@ -4072,7 +4072,7 @@ function annotate(fn, strictDi, name) {
  *
  *   - `Object`: then it should have a `$get` method. The `$get` method will be invoked using
  *     {@link auto.$injector#invoke $injector.invoke()} when an instance needs to be created.
- *   - `Constructor`: a new instance of the provider will be created using
+ *   - `Constructor`: a new_profile instance of the provider will be created using
  *     {@link auto.$injector#instantiate $injector.instantiate()}, then treated as `object`.
  *
  * @returns {Object} registered provider instance
@@ -4181,7 +4181,7 @@ function annotate(fn, strictDi, name) {
  * @name $provide#service
  * @description
  *
- * Register a **service constructor**, which will be invoked with `new` to create the service
+ * Register a **service constructor**, which will be invoked with `new_profile` to create the service
  * instance.
  * This is short for registering a service where its provider's `$get` property is the service
  * constructor function that will be used to instantiate the service instance.
@@ -4286,7 +4286,7 @@ function annotate(fn, strictDi, name) {
  *
  * Register a **service decorator** with the {@link auto.$injector $injector}. A service decorator
  * intercepts the creation of a service, allowing it to override or modify the behaviour of the
- * service. The object returned by the decorator may be the original service, or a new service
+ * service. The object returned by the decorator may be the original service, or a new_profile service
  * object which replaces or wraps and delegates to the original service.
  *
  * @param {string} name The name of the service to decorate.
@@ -4450,7 +4450,7 @@ function createInjector(modulesToLoad, strictDi) {
         if (e.message && e.stack && e.stack.indexOf(e.message) == -1) {
           // Safari & FF's stack traces don't contain error.message content
           // unlike those of Chrome and IE
-          // So if stack doesn't contain message, we create a new string that contains both.
+          // So if stack doesn't contain message, we create a new_profile string that contains both.
           // Since error.stack is read-only in Safari, I'm overriding e and not e.stack here.
           /* jshint -W022 */
           e = e.message + '\n' + e.stack;
@@ -4565,7 +4565,7 @@ function $AnchorScrollProvider() {
    *
    * @description
    * By default, {@link ng.$anchorScroll $anchorScroll()} will automatically detect changes to
-   * {@link ng.$location#hash $location.hash()} and scroll to the element matching the new hash.<br />
+   * {@link ng.$location#hash $location.hash()} and scroll to the element matching the new_profile hash.<br />
    * Use this method to disable automatic scrolling.
    *
    * If automatic scrolling is disabled, one must explicitly call
@@ -5009,7 +5009,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    * @name $animateProvider#register
    *
    * @description
-   * Registers a new injectable animation factory function. The factory function produces the
+   * Registers a new_profile injectable animation factory function. The factory function produces the
    * animation object which contains callback functions for each event that is expected to be
    * animated.
    *
@@ -5264,12 +5264,12 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @ngdoc method
        * @name $animate#move
        * @kind function
-       * @description Inserts (moves) the element into its new position in the DOM either after
+       * @description Inserts (moves) the element into its new_profile position in the DOM either after
        *   the `after` element (if provided) or as the first child within the `parent` element
        *   and then triggers an animation. A promise is returned that will be resolved
        *   during the next digest once the animation has completed.
        *
-       * @param {DOMElement} element the element which will be moved into the new DOM position
+       * @param {DOMElement} element the element which will be moved into the new_profile DOM position
        * @param {DOMElement} parent the parent element which will append the element as
        *   a child (so long as the after element is not present)
        * @param {DOMElement=} after the sibling element after which the element will be appended
@@ -5603,7 +5603,7 @@ function Browser(window, document, $log, $sniffer) {
    * Without any argument, this method just returns current value of location.href.
    *
    * SETTER:
-   * With at least one argument, this method sets url to new value.
+   * With at least one argument, this method sets url to new_profile value.
    * If html5 history api supported, pushState/replaceState is used, otherwise
    * location.href/location.replace is used.
    * Returns its own instance to allow chaining
@@ -5612,7 +5612,7 @@ function Browser(window, document, $log, $sniffer) {
    * {@link ng.$location $location service} to change url.
    *
    * @param {string} url New url (when used as setter)
-   * @param {boolean=} replace Should new url replace current history record?
+   * @param {boolean=} replace Should new_profile url replace current history record?
    * @param {object=} state object to use with pushState/replaceState
    */
   self.url = function(url, replace, state) {
@@ -5668,7 +5668,7 @@ function Browser(window, document, $log, $sniffer) {
     // getter
     } else {
       // - pendingLocation is needed as browsers don't allow to read out
-      //   the new location.href if a reload happened or if there is a bug like in iOS 9 (see
+      //   the new_profile location.href if a reload happened or if there is a bug like in iOS 9 (see
       //   https://openradar.appspot.com/22186109).
       // - the replacement is a workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=407172
       return pendingLocation || location.href.replace(/%27/g,"'");
@@ -5745,7 +5745,7 @@ function Browser(window, document, $log, $sniffer) {
    *
    * It's not called when url is changed by $browser.url() method
    *
-   * The listener gets called with new url as parameter.
+   * The listener gets called with new_profile url as parameter.
    *
    * NOTE: this api is intended for use only by the $location service. Please use the
    * {@link ng.$location $location service} to monitor url changes in angular apps.
@@ -5893,7 +5893,7 @@ function $BrowserProvider() {
  * @returns {object} Newly created cache object with the following set of methods:
  *
  * - `{object}` `info()` — Returns id, size, and options of cache.
- * - `{{*}}` `put({string} key, {*} value)` — Puts a new key-value pair into the cache and returns
+ * - `{{*}}` `put({string} key, {*} value)` — Puts a new_profile key-value pair into the cache and returns
  *   it.
  * - `{{*}}` `get({string} key)` — Returns cached value for `key` or undefined for cache miss.
  * - `{void}` `remove({string} key)` — Removes a key-value pair from the cache.
@@ -6414,12 +6414,12 @@ function $TemplateCacheProvider() {
  *
  * * **falsy:** No scope will be created for the directive. The directive will use its parent's scope.
  *
- * * **`true`:** A new child scope that prototypically inherits from its parent will be created for
- * the directive's element. If multiple directives on the same element request a new scope,
- * only one new scope is created. The new scope rule does not apply for the root of the template
- * since the root of the template always gets a new scope.
+ * * **`true`:** A new_profile child scope that prototypically inherits from its parent will be created for
+ * the directive's element. If multiple directives on the same element request a new_profile scope,
+ * only one new_profile scope is created. The new_profile scope rule does not apply for the root of the template
+ * since the root of the template always gets a new_profile scope.
  *
- * * **`{...}` (an object hash):** A new "isolate" scope is created for the directive's element. The
+ * * **`{...}` (an object hash):** A new_profile "isolate" scope is created for the directive's element. The
  * 'isolate' scope differs from normal scope in that it does not prototypically inherit from its parent
  * scope. This is useful when creating reusable components, which should not accidentally read or modify
  * data in the parent scope.
@@ -6524,7 +6524,7 @@ function $TemplateCacheProvider() {
  * Identifier name for a reference to the controller in the directive's scope.
  * This allows the controller to be referenced from the directive template. This is especially
  * useful when a directive is used as component, i.e. with an `isolate` scope. It's also possible
- * to use it in a directive without an `isolate` / `new` scope, but you need to be aware that the
+ * to use it in a directive without an `isolate` / `new_profile` scope, but you need to be aware that the
  * `controllerAs` reference might overwrite a property that already exists on the parent scope.
  *
  *
@@ -6588,7 +6588,7 @@ function $TemplateCacheProvider() {
  * * `true` - the template will replace the directive's element.
  * * `false` - the template will replace the contents of the directive's element.
  *
- * The replacement process migrates all of the attributes / classes from the old element to the new
+ * The replacement process migrates all of the attributes / classes from the old element to the new_profile
  * one. See the {@link guide/directive#template-expanding-directive
  * Directives Guide} for an example.
  *
@@ -6742,7 +6742,7 @@ function $TemplateCacheProvider() {
  *
  * When a directive requests transclusion, the compiler extracts its contents and provides a **transclusion
  * function** to the directive's `link` function and `controller`. This transclusion function is a special
- * **linking function** that will return the compiled contents linked to a new transclusion scope.
+ * **linking function** that will return the compiled contents linked to a new_profile transclusion scope.
  *
  * <div class="alert alert-info">
  * If you are just using {@link ngTransclude} then you don't need to worry about this function, since
@@ -6759,7 +6759,7 @@ function $TemplateCacheProvider() {
  *
  * <div class="alert alert-info">
  * **Best Practice**: Always provide a `cloneFn` (clone attach function) when you call a translude function
- * since you then get a fresh clone of the original DOM and also have access to the new transclusion scope.
+ * since you then get a fresh clone of the original DOM and also have access to the new_profile transclusion scope.
  * </div>
  *
  * It is normal practice to attach your transcluded content (`clone`) to the DOM inside your **clone
@@ -6858,7 +6858,7 @@ function $TemplateCacheProvider() {
  *   console.log(attrs.ngModel);
  *
  *   // change the attribute
- *   attrs.$set('ngModel', 'new value');
+ *   attrs.$set('ngModel', 'new_profile value');
  *
  *   // observe changes to interpolated attribute
  *   attrs.$observe('ngModel', function(value) {
@@ -6878,7 +6878,7 @@ function $TemplateCacheProvider() {
    <file name="index.html">
     <script>
       angular.module('compileExample', [], function($compileProvider) {
-        // configure new 'compile' directive by passing a directive
+        // configure new_profile 'compile' directive by passing a directive
         // factory function. The factory function injects the '$compile'
         $compileProvider.directive('compile', function($compile) {
           // directive factory creates a link function
@@ -6893,7 +6893,7 @@ function $TemplateCacheProvider() {
                 // assign it into the current DOM
                 element.html(value);
 
-                // compile the new DOM and link it to the current
+                // compile the new_profile DOM and link it to the current
                 // scope.
                 // NOTE: we only compile .childNodes so that
                 // we don't get into infinite loop compiling ourselves
@@ -7103,7 +7103,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * @kind function
    *
    * @description
-   * Register a new directive with the compiler.
+   * Register a new_profile directive with the compiler.
    *
    * @param {string|Object} name Name of the directive in camel-case (i.e. <code>ngBind</code> which
    *    will match as <code>ng-bind</code>), or an object map of directives where the keys are the
@@ -7329,7 +7329,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
        *
        * @description
        * Adds and removes the appropriate CSS class values to the element based on the difference
-       * between the new and old CSS class values (specified as newClasses and oldClasses).
+       * between the new_profile and old CSS class values (specified as newClasses and oldClasses).
        *
        * @param {string} newClasses The current CSS className value
        * @param {string} oldClasses The former CSS className value
@@ -7560,7 +7560,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         if (previousCompileContext && previousCompileContext.needsNewScope) {
           // A parent directive did a replace and a directive on this element asked
           // for transclusion, which caused us to lose a layer of element on which
-          // we could hold the new transclusion scope, so we will create it manually
+          // we could hold the new_profile transclusion scope, so we will create it manually
           // here.
           scope = scope.$parent.$new();
         }
@@ -7631,7 +7631,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      *
      * @param {NodeList} nodeList an array of nodes or NodeList to compile
      * @param {function(angular.Scope, cloneAttachFn=)} transcludeFn A linking function, where the
-     *        scope argument is auto-generated to the new child of the transcluded parent scope.
+     *        scope argument is auto-generated to the new_profile child of the transcluded parent scope.
      * @param {DOMElement=} $rootElement If the nodeList is the root of the compilation tree then
      *        the rootElement must be set the jqLite collection of the compile root. This is
      *        needed so that the jqLite collection items can be replaced with widgets.
@@ -7921,7 +7921,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      * @param {Node} compileNode The raw DOM node to apply the compile functions to
      * @param {Object} templateAttrs The shared attribute function
      * @param {function(angular.Scope, cloneAttachFn=)} transcludeFn A linking function, where the
-     *                                                  scope argument is auto-generated to the new
+     *                                                  scope argument is auto-generated to the new_profile
      *                                                  child of the transcluded parent scope.
      * @param {JQLite} jqCollection If we are working on the root of the compile tree then this
      *                              argument has the root jqLite array so that we can replace nodes
@@ -7981,13 +7981,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             if (isObject(directiveValue)) {
               // This directive is trying to add an isolated scope.
               // Check that there is no scope of any kind already
-              assertNoDuplicate('new/isolated scope', newIsolateScopeDirective || newScopeDirective,
+              assertNoDuplicate('new_profile/isolated scope', newIsolateScopeDirective || newScopeDirective,
                                 directive, $compileNode);
               newIsolateScopeDirective = directive;
             } else {
               // This directive is trying to add a child scope.
               // Check that there is no isolated scope already
-              assertNoDuplicate('new/isolated scope', newIsolateScopeDirective, directive,
+              assertNoDuplicate('new_profile/isolated scope', newIsolateScopeDirective, directive,
                                 $compileNode);
             }
           }
@@ -8085,7 +8085,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
             if (newIsolateScopeDirective || newScopeDirective) {
               // The original directive caused the current element to be replaced but this element
-              // also needs to have a new scope, so we need to tell the template directives
+              // also needs to have a new_profile scope, so we need to tell the template directives
               // that they would need to get their scope from further up, if they require transclusion
               markDirectiveScope(templateDirectives, newIsolateScopeDirective, newScopeDirective);
             }
@@ -8271,7 +8271,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
 
         if (newIsolateScopeDirective) {
-          // Initialize isolate scope bindings for new isolate scope directive.
+          // Initialize isolate scope bindings for new_profile isolate scope directive.
           compile.$$addScopeInfo($element, isolateScope, true, !(templateDirective && (templateDirective === newIsolateScopeDirective ||
               templateDirective === newIsolateScopeDirective.$$originalDirective)));
           compile.$$addScopeClass($element, true);
@@ -8364,7 +8364,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       }
     }
 
-    // Depending upon the context in which a directive finds itself it might need to have a new isolated
+    // Depending upon the context in which a directive finds itself it might need to have a new_profile isolated
     // or child scope created. For instance:
     // * if the directive has been pulled into a template because another directive with a higher priority
     // asked for element transclusion
@@ -8436,7 +8436,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     /**
-     * When the element is replaced with HTML template then the new attributes
+     * When the element is replaced with HTML template then the new_profile attributes
      * on the template need to be merged with the existing attributes in the DOM.
      * The desired effect is to have both of the attributes present.
      *
@@ -8448,7 +8448,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           dstAttr = dst.$attr,
           $element = dst.$$element;
 
-      // reapply the old attributes to the new element
+      // reapply the old attributes to the new_profile element
       forEach(dst, function(value, key) {
         if (key.charAt(0) != '$') {
           if (src[key] && src[key] !== value) {
@@ -8458,7 +8458,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
       });
 
-      // copy the new attributes on the old attrs object
+      // copy the new_profile attributes on the old attrs object
       forEach(src, function(value, key) {
         if (key == 'class') {
           safeAddClass($element, value);
@@ -8730,7 +8730,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                     //so that class changes can tap into the animation
                     //hooks provided by the $animate service. Be sure to
                     //skip animations when the first digest occurs (when
-                    //both the new and the old values are the same) since
+                    //both the new_profile and the old values are the same) since
                     //the CSS classes are the non-interpolated values
                     if (name === 'class' && newValue != oldValue) {
                       attr.$updateClass(newValue, oldValue);
@@ -8753,7 +8753,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      *                               in the root of the tree.
      * @param {JqLite} elementsToRemove The jqLite element which we are going to replace. We keep
      *                                  the shell, but replace its DOM node reference.
-     * @param {Node} newNode The new DOM node.
+     * @param {Node} newNode The new_profile DOM node.
      */
     function replaceWith($rootElement, elementsToRemove, newNode) {
       var firstElementToRemove = elementsToRemove[0],
@@ -8803,13 +8803,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         // Remove data of the replaced element. We cannot just call .remove()
         // on the element it since that would deallocate scope that is needed
-        // for the new node. Instead, remove the data "manually".
+        // for the new_profile node. Instead, remove the data "manually".
         if (!jQuery) {
           delete jqLite.cache[firstElementToRemove[jqLite.expando]];
         } else {
           // jQuery 2.x doesn't expose the data storage. Use jQuery.cleanData to clean up after
           // the replaced element. The cleanData version monkey-patched by Angular would cause
-          // the scope to be trashed and we do need the very same scope to work with the new
+          // the scope to be trashed and we do need the very same scope to work with the new_profile
           // element. However, we cannot just cache the non-patched version and use it here as
           // that would break if another library patches the method after Angular does (one
           // example is jQuery UI). Instead, set a flag indicating scope destroying should be
@@ -8846,7 +8846,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
 
     // Set up $watches for isolate scope and controller bindings. This process
-    // only occurs for isolate scopes and new scopes with controllerAs.
+    // only occurs for isolate scopes and new_profile scopes with controllerAs.
     function initializeDirectiveBindings(scope, attrs, destination, bindings, directive) {
       var removeWatchCollection = [];
       forEach(bindings, function(definition, scopeName) {
@@ -9061,7 +9061,7 @@ function identifierForController(controller, ident) {
  * @ngdoc provider
  * @name $controllerProvider
  * @description
- * The {@link ng.$controller $controller service} is used by Angular to create new
+ * The {@link ng.$controller $controller service} is used by Angular to create new_profile
  * controllers.
  *
  * This provider allows controller registration via the
@@ -9829,7 +9829,7 @@ function $HttpProvider() {
      *   - `Content-Type: application/json`
      *
      * To add or overwrite these defaults, simply add or remove a property from these configuration
-     * objects. To add headers for an HTTP method other than POST or PUT, simply add a new object
+     * objects. To add headers for an HTTP method other than POST or PUT, simply add a new_profile object
      * with the lowercased HTTP method name as the key, e.g.
      * `$httpProvider.defaults.headers.get = { 'My-Header' : 'value' }`.
      *
@@ -9866,7 +9866,7 @@ function $HttpProvider() {
      * Both requests and responses can be transformed using transformation functions: `transformRequest`
      * and `transformResponse`. These properties can be a single function that returns
      * the transformed value (`function(data, headersGetter, status)`) or an array of such transformation functions,
-     * which allows you to `push` or `unshift` a new transformation function into the transformation chain.
+     * which allows you to `push` or `unshift` a new_profile transformation function into the transformation chain.
      *
      * ### Default Transformations
      *
@@ -9900,7 +9900,7 @@ function $HttpProvider() {
      * overwritten. If you wish to augment the default transformations then you must include them in your
      * local transformation array.
      *
-     * The following code demonstrates adding a new response transformation to be run after the default response
+     * The following code demonstrates adding a new_profile response transformation to be run after the default response
      * transformations have been run.
      *
      * ```js
@@ -9909,7 +9909,7 @@ function $HttpProvider() {
      *   // We can't guarantee that the default transformation is an array
      *   defaults = angular.isArray(defaults) ? defaults : [defaults];
      *
-     *   // Append the new transformation to the defaults
+     *   // Append the new_profile transformation to the defaults
      *   return defaults.concat(transform);
      * }
      *
@@ -9938,7 +9938,7 @@ function $HttpProvider() {
      * cache, but the cache is not populated yet, only one request to the server will be made and
      * the remaining requests will be fulfilled using the response from the first request.
      *
-     * You can change the default cache to a new object (built with
+     * You can change the default cache to a new_profile object (built with
      * {@link ng.$cacheFactory `$cacheFactory`}) by updating the
      * {@link ng.$http#defaults `$http.defaults.cache`} property. All requests who set
      * their `cache` property to `true` will now use this cache object.
@@ -9965,13 +9965,13 @@ function $HttpProvider() {
      * There are two kinds of interceptors (and two kinds of rejection interceptors):
      *
      *   * `request`: interceptors get called with a http {@link $http#usage config} object. The function is free to
-     *     modify the `config` object or create a new one. The function needs to return the `config`
-     *     object directly, or a promise containing the `config` or a new `config` object.
+     *     modify the `config` object or create a new_profile one. The function needs to return the `config`
+     *     object directly, or a promise containing the `config` or a new_profile `config` object.
      *   * `requestError`: interceptor gets called when a previous interceptor threw an error or
      *     resolved with a rejection.
      *   * `response`: interceptors get called with http `response` object. The function is free to
-     *     modify the `response` object or create a new one. The function needs to return the `response`
-     *     object directly, or as a promise containing the `response` or a new `response` object.
+     *     modify the `response` object or create a new_profile one. The function needs to return the `response`
+     *     object directly, or as a promise containing the `response` or a new_profile `response` object.
      *   * `responseError`: interceptor gets called when a previous interceptor threw an error or
      *     resolved with a rejection.
      *
@@ -10640,7 +10640,7 @@ function $HttpProvider() {
  * angular.module('myApp', [])
  * .factory('$xhrFactory', function() {
  *   return function createXhr(method, url) {
- *     return new window.XMLHttpRequest({mozSystem: true});
+ *     return new_profile window.XMLHttpRequest({mozSystem: true});
  *   };
  * });
  * ```
@@ -10883,7 +10883,7 @@ function $InterpolateProvider() {
    * @description
    * Symbol to denote start of expression in the interpolated string. Defaults to `{{`.
    *
-   * @param {string=} value new value to set the starting symbol to.
+   * @param {string=} value new_profile value to set the starting symbol to.
    * @returns {string|self} Returns the symbol when used as getter and self if used as setter.
    */
   this.startSymbol = function(value) {
@@ -10901,7 +10901,7 @@ function $InterpolateProvider() {
    * @description
    * Symbol to denote the end of expression in the interpolated string. Defaults to `}}`.
    *
-   * @param {string=} value new value to set the ending symbol to.
+   * @param {string=} value new_profile value to set the ending symbol to.
    * @returns {string|self} Returns the symbol when used as getter and self if used as setter.
    */
   this.endSymbol = function(value) {
@@ -11230,7 +11230,7 @@ function $IntervalProvider() {
       *
       *           var stop;
       *           $scope.fight = function() {
-      *             // Don't start a new fight if we are already fighting
+      *             // Don't start a new_profile fight if we are already fighting
       *             if ( angular.isDefined(stop) ) return;
       *
       *             stop = $interval(function() {
@@ -11271,7 +11271,7 @@ function $IntervalProvider() {
       *
       *             // used to update the UI
       *             function updateTime() {
-      *               element.text(dateFilter(new Date(), format));
+      *               element.text(dateFilter(new_profile Date(), format));
       *             }
       *
       *             // watch the expression, and update the UI on change.
@@ -11975,7 +11975,7 @@ var locationPrototype = {
    *
    * @description
    * If called, all changes to $location during the current `$digest` will replace the current history
-   * record, instead of adding a new one.
+   * record, instead of adding a new_profile one.
    */
   replace: function() {
     this.$$replace = true;
@@ -12231,7 +12231,7 @@ function $LocationProvider() {
     }
 
     $rootElement.on('click', function(event) {
-      // TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
+      // TODO(vojta): rewrite link when opening in new_profile tab/window (in legacy browser)
       // currently we open nice url link and redirect then
 
       if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.shiftKey || event.which == 2 || event.button == 2) return;
@@ -14575,7 +14575,7 @@ function $ParseProvider() {
  *
  * # The Deferred API
  *
- * A new instance of deferred is constructed by calling `$q.defer()`.
+ * A new_profile instance of deferred is constructed by calling `$q.defer()`.
  *
  * The purpose of the deferred object is to expose the associated Promise instance as well as APIs
  * that can be used for signaling the successful or unsuccessful completion, as well as the status
@@ -14597,7 +14597,7 @@ function $ParseProvider() {
  *
  * # The Promise API
  *
- * A new promise instance is created when a deferred instance is created and can be retrieved by
+ * A new_profile promise instance is created when a deferred instance is created and can be retrieved by
  * calling `deferred.promise`.
  *
  * The purpose of the promise object is to allow for interested parties to get access to the result
@@ -14611,7 +14611,7 @@ function $ParseProvider() {
  *   or rejection reason. Additionally, the notify callback may be called zero or more times to
  *   provide a progress indication, before the promise is resolved or rejected.
  *
- *   This method *returns a new promise* which is resolved or rejected via the return value of the
+ *   This method *returns a new_profile promise* which is resolved or rejected via the return value of the
  *   `successCallback`, `errorCallback` (unless that value is a promise, in which case it is resolved
  *   with the value which is resolved in that promise using
  *   [promise chaining](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues)).
@@ -14628,7 +14628,7 @@ function $ParseProvider() {
  *
  * # Chaining promises
  *
- * Because calling the `then` method of a promise returns a new derived promise, it is easily
+ * Because calling the `then` method of a promise returns a new_profile derived promise, it is easily
  * possible to create a chain of promises:
  *
  * ```js
@@ -14734,7 +14734,7 @@ function qFactory(nextTick, exceptionHandler) {
    * @description
    * Creates a `Deferred` object which represents a task which will finish in the future.
    *
-   * @returns {Deferred} Returns a new instance of deferred.
+   * @returns {Deferred} Returns a new_profile instance of deferred.
    */
   var defer = function() {
     return new Deferred();
@@ -14900,7 +14900,7 @@ function qFactory(nextTick, exceptionHandler) {
    * ```js
    *   promiseB = promiseA.then(function(result) {
    *     // success: do something and resolve promiseB
-   *     //          with the old or a new result
+   *     //          with the old or a new_profile result
    *     return result;
    *   }, function(reason) {
    *     // error: handle the error if possible and
@@ -15226,7 +15226,7 @@ function $RootScopeProvider() {
      * @description
      * A root scope can be retrieved using the {@link ng.$rootScope $rootScope} key from the
      * {@link auto.$injector $injector}. Child scopes are created using the
-     * {@link ng.$rootScope.Scope#$new $new()} method. (Most scopes are created automatically when
+     * {@link ng.$rootScope.Scope#$new $new_profile()} method. (Most scopes are created automatically when
      * compiled HTML template is executed.) See also the {@link guide/scope Scopes guide} for
      * an in-depth introduction and usage examples.
      *
@@ -15235,7 +15235,7 @@ function $RootScopeProvider() {
      * A scope can inherit from a parent scope, as in this example:
      * ```js
          var parent = $rootScope;
-         var child = parent.$new();
+         var child = parent.$new_profile();
 
          parent.salutation = "Hello";
          expect(child.salutation).toEqual('Hello');
@@ -15300,11 +15300,11 @@ function $RootScopeProvider() {
       constructor: Scope,
       /**
        * @ngdoc method
-       * @name $rootScope.Scope#$new
+       * @name $rootScope.Scope#$new_profile
        * @kind function
        *
        * @description
-       * Creates a new child {@link ng.$rootScope.Scope scope}.
+       * Creates a new_profile child {@link ng.$rootScope.Scope scope}.
        *
        * The parent scope will propagate the {@link ng.$rootScope.Scope#$digest $digest()} event.
        * The scope can be removed from the scope hierarchy using {@link ng.$rootScope.Scope#$destroy $destroy()}.
@@ -15352,7 +15352,7 @@ function $RootScopeProvider() {
           parent.$$childHead = parent.$$childTail = child;
         }
 
-        // When the new scope is not isolated or we inherit from `this`, and
+        // When the new_profile scope is not isolated or we inherit from `this`, and
         // the parent scope is destroyed, the property `$$destroyed` is inherited
         // prototypically. In all other cases, this property needs to be set
         // when the parent scope is destroyed.
@@ -15679,7 +15679,7 @@ function $RootScopeProvider() {
           newValue = _value;
           var newLength, key, bothNaN, newItem, oldItem;
 
-          // If the new value is undefined, then return undefined as the watch may be a one-time watch
+          // If the new_profile value is undefined, then return undefined as the watch may be a one-time watch
           if (isUndefined(newValue)) return;
 
           if (!isObject(newValue)) { // if primitive
@@ -16071,7 +16071,7 @@ function $RootScopeProvider() {
        * Any exceptions from the execution of the expression are forwarded to the
        * {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * __Note:__ if this function is called outside of a `$digest` cycle, a new `$digest` cycle
+       * __Note:__ if this function is called outside of a `$digest` cycle, a new_profile `$digest` cycle
        * will be scheduled. However, it is encouraged to always call code that changes the model
        * from within an `$apply` call. That includes code evaluated via `$evalAsync`.
        *
@@ -17182,7 +17182,7 @@ function $SceDelegateProvider() {
  * ```
  * angular.module('myAppWithSceDisabledmyApp', []).config(function($sceProvider) {
  *   // Completely disable SCE.  For demonstration purposes only!
- *   // Do not use in new projects.
+ *   // Do not use in new_profile projects.
  *   $sceProvider.enabled(false);
  * });
  * ```
@@ -18324,7 +18324,7 @@ function $FilterProvider($provide) {
  * @kind function
  *
  * @description
- * Selects a subset of items from `array` and returns it as a new array.
+ * Selects a subset of items from `array` and returns it as a new_profile array.
  *
  * @param {Array} array The source array.
  * @param {string|Object|function()} expression The predicate to be used for selecting items from
@@ -19159,7 +19159,7 @@ var uppercaseFilter = valueFn(uppercase);
  * @kind function
  *
  * @description
- * Creates a new array or string containing only a specified number of elements. The elements
+ * Creates a new_profile array or string containing only a specified number of elements. The elements
  * are taken from either the beginning or the end of the source array, string or number, as specified by
  * the value and sign (positive or negative) of `limit`. If a number is used as input, it is
  * converted to a string.
@@ -19172,7 +19172,7 @@ var uppercaseFilter = valueFn(uppercase);
  *     the input will be returned unchanged.
  * @param {(string|number)=} begin Index at which to begin limitation. As a negative index, `begin`
  *     indicates an offset from the end of `input`. Defaults to `0`.
- * @returns {Array|string} A new sub-array or substring of length `limit` or less if input array
+ * @returns {Array|string} A new_profile sub-array or substring of length `limit` or less if input array
  *     had less than `limit` elements.
  *
  * @example
@@ -20182,7 +20182,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
    * Register a control with the form. Input elements using ngModelController do this automatically
    * when they are linked.
    *
-   * Note that the current state of the control will not be reflected on the new parent form. This
+   * Note that the current state of the control will not be reflected on the new_profile parent form. This
    * is not an issue with normal use, as freshly compiled and linked controls are in a `$pristine`
    * state.
    *
@@ -20663,7 +20663,7 @@ var inputType = {
    *    If the expression evaluates to a RegExp object, then this is used directly.
    *    If the expression evaluates to a string, then it will be converted to a RegExp
    *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
-   *    `new RegExp('^abc$')`.<br />
+   *    `new_profile RegExp('^abc$')`.<br />
    *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
    *    start at the index of the last search's match, thus not taking the whole input value into
    *    account.
@@ -20777,7 +20777,7 @@ var inputType = {
           angular.module('dateInputExample', [])
             .controller('DateController', ['$scope', function($scope) {
               $scope.example = {
-                value: new Date(2013, 9, 22)
+                value: new_profile Date(2013, 9, 22)
               };
             }]);
        </script>
@@ -20880,7 +20880,7 @@ var inputType = {
         angular.module('dateExample', [])
           .controller('DateController', ['$scope', function($scope) {
             $scope.example = {
-              value: new Date(2010, 11, 28, 14, 57)
+              value: new_profile Date(2010, 11, 28, 14, 57)
             };
           }]);
       </script>
@@ -20948,7 +20948,7 @@ var inputType = {
    * Input with time validation and transformation. In browsers that do not yet support
    * the HTML5 date input, a text element will be used. In that case, the text must be entered in a valid ISO-8601
    * local time format (HH:mm:ss), for example: `14:57:00`. Model must be a Date object. This binding will always output a
-   * Date object to the model of January 1, 1970, or local date `new Date(1970, 0, 1, HH, mm, ss)`.
+   * Date object to the model of January 1, 1970, or local date `new_profile Date(1970, 0, 1, HH, mm, ss)`.
    *
    * The model must always be a Date object, otherwise Angular will throw an error.
    * Invalid `Date` objects (dates whose `getTime()` is `NaN`) will be rendered as an empty string.
@@ -20984,7 +20984,7 @@ var inputType = {
       angular.module('timeExample', [])
         .controller('DateController', ['$scope', function($scope) {
           $scope.example = {
-            value: new Date(1970, 0, 1, 14, 57, 0)
+            value: new_profile Date(1970, 0, 1, 14, 57, 0)
           };
         }]);
      </script>
@@ -21087,7 +21087,7 @@ var inputType = {
       angular.module('weekExample', [])
         .controller('DateController', ['$scope', function($scope) {
           $scope.example = {
-            value: new Date(2013, 0, 3)
+            value: new_profile Date(2013, 0, 3)
           };
         }]);
       </script>
@@ -21193,7 +21193,7 @@ var inputType = {
       angular.module('monthExample', [])
         .controller('DateController', ['$scope', function($scope) {
           $scope.example = {
-            value: new Date(2013, 9, 1)
+            value: new_profile Date(2013, 9, 1)
           };
         }]);
      </script>
@@ -21298,7 +21298,7 @@ var inputType = {
    *    If the expression evaluates to a RegExp object, then this is used directly.
    *    If the expression evaluates to a string, then it will be converted to a RegExp
    *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
-   *    `new RegExp('^abc$')`.<br />
+   *    `new_profile RegExp('^abc$')`.<br />
    *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
    *    start at the index of the last search's match, thus not taking the whole input value into
    *    account.
@@ -21396,7 +21396,7 @@ var inputType = {
    *    If the expression evaluates to a RegExp object, then this is used directly.
    *    If the expression evaluates to a string, then it will be converted to a RegExp
    *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
-   *    `new RegExp('^abc$')`.<br />
+   *    `new_profile RegExp('^abc$')`.<br />
    *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
    *    start at the index of the last search's match, thus not taking the whole input value into
    *    account.
@@ -21495,7 +21495,7 @@ var inputType = {
    *    If the expression evaluates to a RegExp object, then this is used directly.
    *    If the expression evaluates to a string, then it will be converted to a RegExp
    *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
-   *    `new RegExp('^abc$')`.<br />
+   *    `new_profile RegExp('^abc$')`.<br />
    *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
    *    start at the index of the last search's match, thus not taking the whole input value into
    *    account.
@@ -22132,7 +22132,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  *    If the expression evaluates to a RegExp object, then this is used directly.
  *    If the expression evaluates to a string, then it will be converted to a RegExp
  *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
- *    `new RegExp('^abc$')`.<br />
+ *    `new_profile RegExp('^abc$')`.<br />
  *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
  *    start at the index of the last search's match, thus not taking the whole input value into
  *    account.
@@ -22171,7 +22171,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  *    If the expression evaluates to a RegExp object, then this is used directly.
  *    If the expression evaluates to a string, then it will be converted to a RegExp
  *    after wrapping it in `^` and `$` characters. For instance, `"abc"` will be converted to
- *    `new RegExp('^abc$')`.<br />
+ *    `new_profile RegExp('^abc$')`.<br />
  *    **Note:** Avoid using the `g` flag on the RegExp, as it will cause each successive search to
  *    start at the index of the last search's match, thus not taking the whole input value into
  *    account.
@@ -22592,7 +22592,7 @@ var ngBindHtmlDirective = ['$sce', '$parse', '$compile', function($sce, $parse, 
  * form element or presses the return key).
  *
  * The `ngChange` expression is only evaluated when a change in the input value causes
- * a new value to be committed to the model.
+ * a new_profile value to be committed to the model.
  *
  * It will not be evaluated:
  * * if the value returned from the `$parsers` transformation pipeline has not changed
@@ -22803,7 +22803,7 @@ function classDirective(name, selector) {
  * The directive won't add duplicate classes if a particular class was already set.
  *
  * When the expression changes, the previously added classes are removed and only then are the
- * new classes added.
+ * new_profile classes added.
  *
  * @animations
  * **add** - happens just before the class is applied to the elements
@@ -23501,7 +23501,7 @@ var ngControllerDirective = [function() {
                 }
               });
               if (!found) {
-                throw new Error('expected an error that matches ' + regex);
+                throw new_profile Error('expected an error that matches ' + regex);
               }
             });
           }
@@ -24050,7 +24050,7 @@ forEach(
  * case when this difference is significant is when using css selectors that rely on an element's
  * position within the DOM, such as the `:first-child` or `:last-child` pseudo-classes.
  *
- * Note that when an element is removed using `ngIf` its scope is destroyed and a new scope
+ * Note that when an element is removed using `ngIf` its scope is destroyed and a new_profile scope
  * is created when the element is restored.  The scope created within `ngIf` inherits from
  * its parent scope using
  * [prototypal inheritance](https://github.com/angular/angular.js/wiki/Understanding-Scopes#javascript-prototypal-inheritance).
@@ -24067,7 +24067,7 @@ forEach(
  * and `leave` effects.
  *
  * @animations
- * enter - happens just after the `ngIf` contents change and a new DOM element is created and injected into the `ngIf` container
+ * enter - happens just after the `ngIf` contents change and a new_profile DOM element is created and injected into the `ngIf` container
  * leave - happens just before the `ngIf` contents are removed from the DOM
  *
  * @element ANY
@@ -24180,7 +24180,7 @@ var ngIfDirective = ['$animate', function($animate) {
  * access on some browsers.
  *
  * @animations
- * enter - animation is used to bring new content into the browser.
+ * enter - animation is used to bring new_profile content into the browser.
  * leave - animation is used to animate existing content away.
  *
  * The enter and leave animation occur concurrently.
@@ -24190,7 +24190,7 @@ var ngIfDirective = ['$animate', function($animate) {
  *
  * @param {string} ngInclude|src angular expression evaluating to URL. If the source is a string constant,
  *                 make sure you wrap it in **single** quotes, e.g. `src="'myPartialTemplate.html'"`.
- * @param {string=} onload Expression to evaluate when a new partial is loaded.
+ * @param {string=} onload Expression to evaluate when a new_profile partial is loaded.
  *                  <div class="alert alert-warning">
  *                  **Note:** When using onload on SVG elements in IE11, the browser will try to call
  *                  a function with the name on the window element, which will usually throw a
@@ -25098,7 +25098,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *
    * The `$rollbackViewValue()` method should be called before programmatically changing the model of an
    * input which may have such events pending. This is important in order to make sure that the
-   * input field will be updated with the new model value and any pending operations are cancelled.
+   * input field will be updated with the new_profile model value and any pending operations are cancelled.
    *
    * <example name="ng-model-cancel-update" module="cancel-update-example">
    *   <file name="app.js">
@@ -25386,7 +25386,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * directive calls it when the value of the input changes and {@link ng.directive:select select}
    * calls it when an option is selected.
    *
-   * When `$setViewValue` is called, the new `value` will be staged for committing through the `$parsers`
+   * When `$setViewValue` is called, the new_profile `value` will be staged for committing through the `$parsers`
    * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
    * value sent directly for processing, finally to be applied to `$modelValue` and then the
    * **expression** specified in the `ng-model` attribute. Lastly, all the registered change listeners,
@@ -25416,7 +25416,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * you should pass the input DOM value. Otherwise, the control and the scope model become
    * out of sync. It's also important to note that `$setViewValue` does not call `$render` or change
    * the control's DOM value in any way. If we want to change the control's DOM value
-   * programmatically, we should update the `ngModel` scope expression. Its new value will be
+   * programmatically, we should update the `ngModel` scope expression. Its new_profile value will be
    * picked up by the model controller, which will run it through the `$formatters`, `$render` it
    * to update the DOM, and finally call `$validate` on it.
    * </div>
@@ -26067,7 +26067,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  *
  * In many cases, `ngRepeat` can be used on `<option>` elements instead of `ngOptions` to achieve a
  * similar result. However, `ngOptions` provides some benefits such as reducing memory and
- * increasing speed by not creating a new scope for each repeated instance, as well as providing
+ * increasing speed by not creating a new_profile scope for each repeated instance, as well as providing
  * more flexibility in how the `<select>`'s model is assigned via the `select` **`as`** part of the
  * comprehension expression. `ngOptions` should be used when the `<select>` model needs to be bound
  *  to a non-string value. This is because an option element can only be bound to string values at
@@ -26661,13 +26661,13 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
           // The next element is the right type so reuse it
           element = current;
         } else {
-          // The next element is not the right type so create a new one
+          // The next element is not the right type so create a new_profile one
           element = templateElement.cloneNode(false);
           if (!current) {
             // There are no more elements so just append it to the select
             parent.appendChild(element);
           } else {
-            // The next element is not a group so insert the new one
+            // The next element is not a group so insert the new_profile one
             parent.insertBefore(element, current);
           }
         }
@@ -27107,7 +27107,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * `ngRepeat` uses {@link $rootScope.Scope#$watchCollection $watchCollection} to detect changes in
  * the collection. When a change happens, ngRepeat then makes the corresponding changes to the DOM:
  *
- * * When an item is added, a new instance of the template is added to the DOM.
+ * * When an item is added, a new_profile instance of the template is added to the DOM.
  * * When an item is removed, its template instance is removed from the DOM.
  * * When items are reordered, their respective templates are reordered in the DOM.
  *
@@ -27143,7 +27143,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * If you are working with objects that have an identifier property, you should track
  * by the identifier instead of the whole object. Should you reload your data later, `ngRepeat`
  * will not have to rebuild the DOM elements for items it has already rendered, even if the
- * JavaScript objects in the collection have been substituted for new ones. For large collections,
+ * JavaScript objects in the collection have been substituted for new_profile ones. For large collections,
  * this signifincantly improves rendering performance. If you don't have a unique identifier,
  * `track by $index` can also provide a performance boost.
  * </div>
@@ -27215,7 +27215,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * as **data-ng-repeat-start**, **x-ng-repeat-start** and **ng:repeat-start**).
  *
  * @animations
- * **.enter** - when a new item is added to the list or when an item is revealed after a filter
+ * **.enter** - when a new_profile item is added to the list or when an item is revealed after a filter
  *
  * **.leave** - when an item is removed from the list or when an item is filtered out
  *
@@ -27519,7 +27519,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
                   "Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: {0}, Duplicate key: {1}, Duplicate value: {2}",
                   expression, trackById, value);
             } else {
-              // new never before seen block
+              // new_profile never before seen block
               nextBlockOrder[index] = {id: trackById, scope: undefined, clone: undefined};
               nextBlockMap[trackById] = true;
             }
@@ -27564,7 +27564,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
               previousNode = getBlockEnd(block);
               updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
             } else {
-              // new item which we don't know about
+              // new_profile item which we don't know about
               $transclude(function ngRepeatTransclude(clone, scope) {
                 block.scope = scope;
                 // http://jsperf.com/clone-vs-createcomment
@@ -28307,7 +28307,7 @@ var noopNgModelController = { $setViewValue: noop, $render: noop };
 function chromeHack(optionElement) {
   // Workaround for https://code.google.com/p/chromium/issues/detail?id=381459
   // Adding an <option selected="selected"> element to a <select required="required"> should
-  // automatically select the new element
+  // automatically select the new_profile element
   if (optionElement[0].hasAttribute('selected')) {
     optionElement[0].selected = true;
   }
@@ -28483,7 +28483,7 @@ var SelectController =
  * ngOptions} to achieve a similar result. However, `ngOptions` provides some benefits, such as
  * more flexibility in how the `<select>`'s model is assigned via the `select` **`as`** part of the
  * comprehension expression, and additionally in reducing memory and increasing speed by not creating
- * a new scope for each repeated instance.
+ * a new_profile scope for each repeated instance.
  * </div>
  *
  *

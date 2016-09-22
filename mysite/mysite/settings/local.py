@@ -33,6 +33,9 @@ if settings.DEBUG:
         ("Михайло Поліщук", "mishaelitzem2@rambler.ru"),
     )
 
+    #Кортеж по формату аналогичен ADMINS, который определяет кто получает оповещение о “сломанных” ссылках
+    MANAGERS = ADMINS
+
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',
@@ -42,26 +45,36 @@ if settings.DEBUG:
         'django.contrib.staticfiles',
         # other django apps
         'django.contrib.sites',
+        'django.contrib.sitemaps',
+        'django.contrib.redirects',
         'django.contrib.flatpages',
+        'django.contrib.webdesign',   # for lorem
+        'django.contrib.humanize',
         # my apps
-        'blog',
+        'blog.apps.BlogConfig',
         'comment',
         'loginsys',
         'navigation',
         'languages',
     )
+
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.BrokenLinkEmailsMiddleware',     # Django может уведомлять вас о неработающих ссылках
         'django.middleware.locale.LocaleMiddleware',               # add this line after the SessionMiddleware for translate
+        # 'django.middleware.cache.UpdateCacheMiddleware',         # add this line for cash all site
         'django.middleware.common.CommonMiddleware',
+        # 'django.middleware.cache.FetchFromCacheMiddleware',        # add this line for cash all site
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
+        # 'django.contrib.auth.middleware.RemoteUserMiddleware',        # for REMOTE_USER
         'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
         # other MIDDLEWARE_CLASSES
-        'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
+        'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+        'django.contrib.redirects.middleware.RedirectFallbackMiddleware'     # for redirects app
     )
 
     ROOT_URLCONF = 'mysite.urls'
@@ -76,8 +89,14 @@ if settings.DEBUG:
                      os.path.join(BASE_DIR, 'languages/templates/languages'),
                      os.path.join(BASE_DIR, 'loginsys/templates'),
                      os.path.join(BASE_DIR, 'loginsys/templates/registration')],
-            'APP_DIRS': True,
+            # 'APP_DIRS': True,
             'OPTIONS': {
+                'loaders': [                                              # Кеширующий загрузчик шаблонов принимает список загрузчиков
+                    ('django.template.loaders.cached.Loader', [
+                        'django.template.loaders.filesystem.Loader',
+                        'django.template.loaders.app_directories.Loader',
+                        ]),
+                ],
                 'context_processors': [
                     'django.template.context_processors.debug',
                     'django.template.context_processors.request',
@@ -103,6 +122,7 @@ if settings.DEBUG:
             'PASSWORD': '170986',
             'HOST': 'localhost',    # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
             'PORT': '',             # Set to empty string for default.
+            'client_encoding': 'UTF8',
         }
     }
 
@@ -134,7 +154,7 @@ if settings.DEBUG:
 
     USE_L10N = True
 
-    USE_TZ = True
+    USE_TZ = False
 
     from .db_password import db_password
 
@@ -156,6 +176,7 @@ if settings.DEBUG:
 
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'loginsys', 'static'),
         os.path.join(BASE_DIR, 'blog', 'static', 'blog'),
         os.path.join(BASE_DIR, 'languages', 'static', 'img'),
     )
@@ -165,3 +186,6 @@ if settings.DEBUG:
     MEDIA_URL = '/media/'
 
     MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_root')
+
+
+

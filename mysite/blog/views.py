@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, redirect, get_object_or_404
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404, get_list_or_404
 from django.core.urlresolvers import reverse
 from blog.models import Article
 from navigation.models import Category, MenuItem
@@ -16,12 +16,22 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
 
+from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_control
+from django.views.decorators.vary import vary_on_headers
+import logging
 
+
+# @cache_control(must_revalidate=True, max_age=3600)
+# @vary_on_headers("User-Agent", "Cookie", "Accept-language")
 def start_page(request):
     form = SendMassageForm()
     users = Profile.objects.exclude(pk=request.user.pk).order_by('-user__date_joined')
     current_page = Paginator(users, 6)
     page_number = request.GET.get('page', 1)
+    # if request.user:
+    #     logger = logging.getLogger(__name__)
+    #     logger.error('\nSomething went wrong!\n')
     users_list = current_page.page(page_number)
     if request.POST and 'pause' not in request.session:
         form = SendMassageForm(request.POST)
@@ -39,6 +49,7 @@ def start_page(request):
     return render(request, 'content_start_page.html', context)
 
 
+# @cache_page(60 * 15, key_prefix='articles')
 def article_list(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
     articles_list = Article.objects.filter(article_category__category_name=category_slug,
@@ -282,4 +293,6 @@ def css_3(request):
 
 def bootstrap(request):
     pass
+
+
 

@@ -512,6 +512,7 @@ ul.errorlist {
 ul.likes {
     display: inline-block;
     margin-top: 2px;
+    width: 100%;
 }
 
 ul.likes li{
@@ -569,7 +570,8 @@ ul.pagination li.active a {
 }
 
 #login-register {
-    margin-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
 
 li.flag {
@@ -616,26 +618,49 @@ li.flag a img.active-language {
 
 #id_email {
     display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 #id_email:focus {
     border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+button.btn > a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+button.btn.btn-default > a {
+    color: #23527c;
+}
+
+.col-md-4 div.well p {
+    text-indent: 0;
+    font-size: 14px;
+}
+
+.col-md-4 div.well {
+    padding: 10px;
+}
+
+.col-md-4 div.well h3 {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
