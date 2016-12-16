@@ -22295,3 +22295,42 @@ WARNING 2016-12-16 15:01:26,335 base 6120 4328 Not Found: /gggg/
 WARNING 2016-12-16 15:01:30,109 base 6120 2912 Not Found: /gggg/
 WARNING 2016-12-16 15:04:27,786 base 6120 5540 Not Found: /about/
 WARNING 2016-12-16 15:04:36,028 base 6120 6064 Not Found: /contacts/
+ERROR 2016-12-16 16:01:25,326 base 1452 5612 Internal Server Error: /send-mail-ajax
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 110, in send_mail_ajax
+    send_mail(email, massage, from_email, to_email, fail_silently=False)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\__init__.py", line 61, in send_mail
+    return mail.send()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\message.py", line 292, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\backends\smtp.py", line 100, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\backends\smtp.py", line 67, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python34\lib\smtplib.py", line 652, in login
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials g73sm1382603ljg.41 - gsmtp')
+ERROR 2016-12-16 16:01:26,829 base 1452 2680 Internal Server Error: /send-mail-ajax
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 110, in send_mail_ajax
+    send_mail(email, massage, from_email, to_email, fail_silently=False)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\__init__.py", line 61, in send_mail
+    return mail.send()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\message.py", line 292, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\backends\smtp.py", line 100, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\mail\backends\smtp.py", line 67, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Python34\lib\smtplib.py", line 652, in login
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials u204sm1366750lja.5 - gsmtp')
+WARNING 2016-12-16 16:13:22,847 base 172 1976 Not Found: /contacts/

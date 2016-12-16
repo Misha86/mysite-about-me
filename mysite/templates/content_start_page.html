@@ -1,13 +1,12 @@
 {% extends "base.html" %}{% load staticfiles %} {% load i18n %}
 
 
-{% block title %}{% endblock %}
 
+{% block scripts %}
 
-{% block style %}
+    <script src="{% static 'js/main.js' %}"></script>
 
-
-{% endblock %}
+{% endblock scripts %}
 
 
 {% block content %}
@@ -20,18 +19,13 @@
             найпроблемніших місцях і я спробував дати подальші інструкції щодо розгрібання даних каменів
             спотикання.</p>
     </div>
-    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6 jumbotron">
-        <form id="form-massage" action="{% url 'blog:start_page' %}" method="post">
-            {% csrf_token %}
-            {% for field in form %}
-                {{ field.errors }}
-                {{ field }}
-            {% endfor %}
-            {#                      <input  value="{{email}}" type="text" class="form-control" name="email" id="email" placeholder="введіть Ваш e-mail">#}
-            {#                      <textarea rows="7" value="{{massage}}" class="form-control"  name="massage" id="massage" placeholder="введіть текст повідомлення для відправлення"></textarea>#}
-            <button type="submit" class="btn btn-primary">відправити повідомлення</button>
-        </form>
+
+    <div id="mail-form" class="col-lg-4 col-md-5 col-sm-5 col-xs-6 jumbotron">
+
+        {% include "partial_mail_form.html" %}
+
     </div>
+
     {% if users %}
         <div class="col-lg-7 col-md-6 col-sm-6 col-xs-5 pull-right jumbotron">
         <div>
@@ -40,7 +34,7 @@
         <div class="row">
             {% for user in users %}
                 <div id="people" class="col-lg-2 col-sm-4 col-xs-6 text-center">
-{#                    <img src="{{ user.avatar.url }}" class="img-circle" width="70px" height="70px">#}
+                    {#                    <img src="{{ user.avatar.url }}" class="img-circle" width="70px" height="70px">#}
                     <img src="{{ user.avatar.url }}" class="{% cycle 'img-circle' 'img-rounded'  %}" width="70px" height="70px">
                     <h5>{{ user.user.username }}</h5>
                 </div>

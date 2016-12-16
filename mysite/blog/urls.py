@@ -8,6 +8,7 @@ from blog.views import (start_page,
                         article_update,
                         article_delete,
                         # article_detail,
+                        send_mail_ajax,
                         article_detail_ajax,
                         add_like,
                         photo)
@@ -23,6 +24,7 @@ urlpatterns = [
     url(r'^api/', include('blog.class_based.urls')),
 
     url(r'^$', start_page, name='start_page'),
+    url(r'^send-mail-ajax$', send_mail_ajax, name='send_mail_ajax'),
 
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/$', article_list, name='article_list'),
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/update/$', articles_list_update,

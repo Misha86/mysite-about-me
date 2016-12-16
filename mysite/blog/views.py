@@ -22,6 +22,8 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.cache import cache_control
 from django.views.decorators.vary import vary_on_headers
 import logging
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 
 def bootstrap_query(array, num):
@@ -38,31 +40,104 @@ def bootstrap_query(array, num):
 
 # @cache_control(must_revalidate=True, max_age=3600)
 # @vary_on_headers("User-Agent", "Cookie", "Accept-language")
+# def start_page(request):
+#     form = SendMassageForm()
+#     users = Profile.objects.exclude(pk=request.user.pk).order_by('-user__date_joined')
+#     current_page = Paginator(users, 6)
+#     page_number = request.GET.get('page', 1)
+#     # if request.user:
+#     #     logger = logging.getLogger(__name__)
+#     #     logger.error('\nSomething went wrong!\n')
+#     users_list = current_page.page(page_number)
+#     if request.POST and 'pause' not in request.session:
+#         form = SendMassageForm(request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             massage = form.cleaned_data['massage']
+#             from_email = settings.EMAIL_HOST_USER
+#             to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
+#             send_mail(email, massage, from_email, to_email, fail_silently=False)
+#             request.session.set_expiry(60)
+#             request.session['pause'] = True
+#             return redirect('/')
+#     context = {
+#         'form': form,
+#         'users': users_list,
+#         }
+#     return render(request, 'content_start_page.html', context)
+
+
 def start_page(request):
     form = SendMassageForm()
     users = Profile.objects.exclude(pk=request.user.pk).order_by('-user__date_joined')
     current_page = Paginator(users, 6)
     page_number = request.GET.get('page', 1)
+    users_list = current_page.page(page_number)
+
     # if request.user:
     #     logger = logging.getLogger(__name__)
     #     logger.error('\nSomething went wrong!\n')
-    users_list = current_page.page(page_number)
-    if request.POST and 'pause' not in request.session:
-        form = SendMassageForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            massage = form.cleaned_data['massage']
-            from_email = settings.EMAIL_HOST_USER
-            to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
-            send_mail(email, massage, from_email, to_email, fail_silently=False)
-            request.session.set_expiry(60)
-            request.session['pause'] = True
-            return redirect('/')
+
+    # if request.POST and 'pause' not in request.session:
+    #     form = SendMassageForm(request.POST)
+    #     if form.is_valid():
+    #         email = form.cleaned_data['email']
+    #         massage = form.cleaned_data['massage']
+    #         from_email = settings.EMAIL_HOST_USER
+    #         to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
+    #         send_mail(email, massage, from_email, to_email, fail_silently=False)
+    #         request.session.set_expiry(60)
+    #         request.session['pause'] = True
+    #         return redirect('/')
     context = {
         'form': form,
         'users': users_list,
         }
     return render(request, 'content_start_page.html', context)
+
+
+import time
+
+
+def send_mail_ajax(request):
+    data = dict()
+    form = SendMassageForm()
+    now = time.time()
+
+    if request.session.get('send', False) and request.session.get('start_time', False) > now:
+        messages.error(request, _('Ви вже відправили повідомлення, зачекайте хвилину.'), extra_tags='error')
+
+    else:
+        if request.is_ajax() and request.POST:
+            form = SendMassageForm(request.POST)
+            if form.is_valid():
+                email = form.cleaned_data['email']
+                massage = form.cleaned_data['massage']
+                from_email = settings.EMAIL_HOST_USER
+                to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
+                # send_mail(email, massage, from_email, to_email, fail_silently=False)
+
+                form = SendMassageForm()
+
+                messages.success(request, _('Повідомлення відправлено успішно!'), extra_tags='success')
+
+                request.session['send'] = True
+                request.session['start_time'] = time.time() + 20
+
+    message = messages.get_messages(request)
+    if message:
+        data['html_messages'] = render_to_string('messages.html',
+                                                 {'messages': message},
+                                                 request=request)
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('partial_mail_form.html',
+                                         context,
+                                         request=request)
+    return JsonResponse(data)
+
+
+
 
 
 # @cache_page(60 * 15, key_prefix='articles')
