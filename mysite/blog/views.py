@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.shortcuts import render, render_to_response, redirect, get_object_or_404, get_list_or_404
 from django.core.urlresolvers import reverse
 from blog.models import Article
@@ -11,7 +13,7 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from loginsys.models import Profile
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
@@ -21,6 +23,18 @@ from django.views.decorators.cache import cache_control
 from django.views.decorators.vary import vary_on_headers
 import logging
 
+
+def bootstrap_query(array, num):
+    new_list = []
+    length = int(len(array)//num)
+    rest = len(array) % num
+    b = 0
+    for i in range(length):
+        new_list.append(array[b:b+num])
+        b += num
+    if rest:
+        new_list.append(array[len(array)-rest:])
+    return new_list
 
 # @cache_control(must_revalidate=True, max_age=3600)
 # @vary_on_headers("User-Agent", "Cookie", "Accept-language")
@@ -38,7 +52,9 @@ def start_page(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             massage = form.cleaned_data['massage']
-            send_mail(email, massage, email, [settings.EMAIL_HOST_USER],)
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
+            send_mail(email, massage, from_email, to_email, fail_silently=False)
             request.session.set_expiry(60)
             request.session['pause'] = True
             return redirect('/')
@@ -52,15 +68,17 @@ def start_page(request):
 # @cache_page(60 * 15, key_prefix='articles')
 def article_list(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
-    articles_list = Article.objects.filter(article_category__category_name=category_slug,
-                                           article_category__menu_category__menu_name=item_slug).order_by('-article_date')
-    articles_carousel = articles_list.order_by('-article_likes')[0:3]
+    article = Article.objects.filter(article_category__category_name=category_slug,
+                                     article_category__menu_category__menu_name=item_slug).order_by('-article_date')
+    # suite all articles adding class = "row"
+    articles_list = bootstrap_query(article, 3)
+    articles_carousel = article.order_by('-article_likes')[0:3]
     query = request.GET.get('q')
     if query:
         articles_list = Article.objects.filter(
             Q(article_title__icontains=query) |
             Q(article_text__icontains=query)).distinct()
-    paginator = Paginator(articles_list, 9)
+    paginator = Paginator(articles_list, 3)
     page = request.GET.get('page')
     try:
         # it`s for pagination in bootstrap part 1
@@ -136,7 +154,7 @@ def articles_list_update(request, item_slug, category_slug=None):
     return render(request, 'articles_list_update.html', context)
 
 
-def article_detail(request, item_slug, category_slug, article_slug):
+def article_detail_ajax(request, item_slug, category_slug, article_slug):
     category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
     article = category.articles.get(article_slug=article_slug)
     comments = article.comments.all().order_by('-comments_create')
@@ -144,22 +162,6 @@ def article_detail(request, item_slug, category_slug, article_slug):
     page_number = request.GET.get('page', 1)
     form = CommentForm(auto_id='id_for_%s', label_suffix=' -> -> -> ->')
 
-    # if not request.user.is_authenticated():
-    #     return redirect('/auth/login/?next=%s' % request.path)
-
-    if request.POST and 'pause' in request.session:
-        messages.error(request, _('Ви вже залишили коментар, зачекайте хвилину.'), extra_tags='error')
-    elif request.POST and 'pause' not in request.session:
-        form = CommentForm(request.POST)
-        if form.is_valid() and request.user.is_authenticated():
-            comment = form.save(commit=False)
-            comment.comments_article = Article.objects.get(article_slug=article_slug)
-            comment.comments_user = Profile.objects.get(pk=request.user.pk)                            # АБО comment.comments_from = auth.get_user(request)  АБО comment.comments_from_id = auth.get_user(request).id
-            comment.save()
-            request.session.set_expiry(60)
-            request.session['pause'] = True
-            messages.success(request, _('Коментар добавлений успішно!'), extra_tags='success')
-            return redirect(article.get_absolute_url())
     context = {
         'comments': current_page.page(page_number),
         'article': article,
@@ -167,6 +169,38 @@ def article_detail(request, item_slug, category_slug, article_slug):
         }
     return render(request, 'gallery_work.html', context)
 
+
+# def article_detail(request, item_slug, category_slug, article_slug):
+#     category = get_object_or_404(Category, menu_category__menu_name=item_slug, category_name=category_slug)
+#     article = category.articles.get(article_slug=article_slug)
+#     comments = article.comments.all().order_by('-comments_create')
+#     current_page = Paginator(comments, 4)
+#     page_number = request.GET.get('page', 1)
+#     form = CommentForm(auto_id='id_for_%s', label_suffix=' -> -> -> ->')
+#
+#     # if not request.user.is_authenticated():
+#     #     return redirect('/auth/login/?next=%s' % request.path)
+#
+#     if request.POST and 'pause' in request.session:
+#         messages.error(request, _('Ви вже залишили коментар, зачекайте хвилину.'), extra_tags='error')
+#     elif request.POST and 'pause' not in request.session:
+#         form = CommentForm(request.POST)
+#         if form.is_valid() and request.user.is_authenticated():
+#             comment = form.save(commit=False)
+#             comment.comments_article = Article.objects.get(article_slug=article_slug)
+#             comment.comments_user = Profile.objects.get(pk=request.user.pk)                            # АБО comment.comments_from = auth.get_user(request)  АБО comment.comments_from_id = auth.get_user(request).id
+#             comment.save()
+#             request.session.set_expiry(60)
+#             request.session['pause'] = True
+#             messages.success(request, _('Коментар добавлений успішно!'), extra_tags='success')
+#             return redirect(article.get_absolute_url())
+#     context = {
+#         'comments': current_page.page(page_number),
+#         'article': article,
+#         'form': form,
+#         }
+#     return render(request, 'gallery_work.html', context)
+#
 
 def article_create(request, item_slug, category_slug=None):
     if not request.user.is_superuser:
@@ -245,19 +279,23 @@ def article_delete(request, item_slug, category_slug, article_slug):
 
 # @login_required(redirect_field_name='my_redirect_field')
 def add_like(request, id=None):
-    article = get_object_or_404(Article, id=id)
+    # article = get_object_or_404(Article, id=id)
+    article = Article.objects.filter(id=id)
     try:
         if id in request.COOKIES:
             return_path = request.META.get('HTTP_REFERER', '/')
-            messages.error(request, _("Ви вже оцінили картинку \'") + article.article_title + "\' !", extra_tags='error')
+            # messages.error(request, _("Ви вже оцінили картинку \'") + article.article_title + "\' !", extra_tags='error')
+            messages.error(request, _("Ви вже оцінили картинку \'") + article[0].article_title + "\' !", extra_tags='error')
             return redirect(return_path)
         else:
-            article.article_likes += 1
-            article.save()
+            # article.article_likes += 1
+            # article.save() or
+            article.update(article_likes=F('article_likes') + 1)
             return_path = request.META.get('HTTP_REFERER', '/')
             response = redirect(return_path)
             response.set_cookie(id, 'test')
-            messages.error(request, _("Дякую за Вашу оцінку картинки \'") + article.article_title + "\' !",
+            # messages.error(request, _("Дякую за Вашу оцінку картинки \'") + article.article_title + "\' !",
+            messages.error(request, _("Дякую за Вашу оцінку картинки \'") + article[0].article_title + "\' !",
                            extra_tags='success')
             return response
     except ObjectDoesNotExist:
@@ -265,17 +303,46 @@ def add_like(request, id=None):
     return redirect('/')
 
 
-def proposals(request):
-    pass
+import requests
+import urllib.request
+from bs4 import BeautifulSoup
 
+url = 'https://vk.com/album90386736_237729907'
+
+
+def make_soup(url):
+    url_requests = b''
+    try:
+        url_requests += requests.get(url).content
+    except Exception as e:
+        print("Somethings bad: " + str(e))
+        try:
+            url_requests = urllib.request.urlopen(url)
+        except Exception as e:
+            print("Somethings bad: " + str(e))
+    soup_data = BeautifulSoup(url_requests, "html.parser")   #.prettify()
+    return soup_data
+
+
+# def photo(request, item_slug):
+#     my_data = ['aefasdf', ['sdfsdffsdfsfd']]
+#     response = HttpResponse(my_data, content_type='application/vnd.ms-excel', status=200)
+#     response['Content-Disposition'] = 'attachment; filename="foo.xls"'
+#     return response
 
 def photo(request, item_slug):
     menu_item = get_object_or_404(MenuItem,  menu_name=item_slug)
     photo_list = Article.objects.filter(article_category__menu_category__menu_name=item_slug).order_by('-article_date')
-
-    return render(request, 'photo_list.html', locals())
-
-
+    soup = make_soup(url)
+    vk_links = []
+    links = soup.find_all('img', attrs={'class': 'ph_img'})
+    for link in links:
+        link_a = link.get('data-src_big')[:-8]
+        vk_links.append(link_a)
+    context = {
+        'vk_links': vk_links
+    }
+    return render(request, 'photo_list.html', context)
 
 
 
@@ -293,6 +360,3 @@ def css_3(request):
 
 def bootstrap(request):
     pass
-
-
-

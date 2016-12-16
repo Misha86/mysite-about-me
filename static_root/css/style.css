@@ -664,3 +664,7 @@ button.btn.btn-default > a {
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+#select li {
+    display: block;
+}

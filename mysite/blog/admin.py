@@ -3,6 +3,7 @@ from admin.my_admin import misha
 from blog.models import Article, Tag
 from comment.models import Comments
 from django.utils.translation import ugettext_lazy as _
+import statistics
 
 
 class CommentsInLine(admin.TabularInline):
@@ -29,7 +30,7 @@ class ArticleAdmin(admin.ModelAdmin):
                                                                                'article_tag'), ]}),
         (_('Зававнтажені картинки'), {
             'classes': ['collapse', ],
-            'fields': ['article_image', 'article_likes', ]
+            'fields': ['article_image', ('width_field', 'height_field'), 'article_likes', ]
         })
     ]
     list_display = ('article_title', uppercase_firstletter_article_text, 'article_date', 'article_user',
@@ -81,4 +82,6 @@ admin.site.register(Tag, TagAdmin)
 
 misha.register(Article, ArticleAdmin)        # register in my admin
 misha.register(Tag, TagAdmin)                # register in my admin
+
+
 

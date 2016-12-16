@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 from django.conf import settings
 
+
 if not settings.DEBUG:
     import os
     from django.utils.translation import ugettext_lazy as _
@@ -81,6 +82,12 @@ if not settings.DEBUG:
                     'django.core.context_processors.i18n',                  # add this processor for translate
                     'django.core.context_processors.csrf',
                     ],
+                # 'loaders': [
+                #     ('django.template.loaders.cached.Loader', [            # it`s for load templates from cached
+                #         'django.template.loaders.filesystem.Loader',       # it`s load default in 'DIRS'
+                #         'django.template.loaders.app_directories.Loader'   # it`s load default in 'APP_DIRS'
+                #     ]),
+                # ],
                 },
             },
         ]
@@ -129,7 +136,7 @@ if not settings.DEBUG:
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
         os.path.join(BASE_DIR, 'blog', 'static', 'blog'),
-        os.path.join(BASE_DIR, 'languages', 'static', 'img'),
+        os.path.join(BASE_DIR, 'languages', 'static', 'languages/img'),
     )
 
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root')

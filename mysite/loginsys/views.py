@@ -7,6 +7,12 @@ from loginsys.form import (ProfileCreationForm,
                            ProfileUpdateForm)
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth import update_session_auth_hash
+# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 def login(request):
@@ -72,7 +78,7 @@ def register(request):
             new_user = auth.authenticate(username=form.cleaned_data['username'],
                                          password=form.cleaned_data['password2'])
             new_profile = Profile(user=new_user, avatar=form.cleaned_data['avatar'],
-                                  sex=form.cleaned_data['sex'])
+                                  sex=form.cleaned_data['sex'], date_of_birth=form.cleaned_data['date_of_birth'])
             new_profile.save()
             auth.login(request, new_user)
             messages.success(request, 'Дякую, що долучилися до нас, ' + new_profile.user.username + '!',
@@ -89,10 +95,6 @@ def register(request):
     return render(request, 'register.html', context)
 
 
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.models import User
-
-
 def update(request):
     path = request.META.get('HTTP_REFERER', '/')
     if path == request.build_absolute_uri():
@@ -101,9 +103,16 @@ def update(request):
         return_path = path
     instance = get_object_or_404(User, username=request.user)
     form = ProfileUpdateForm(request.POST or None, request.FILES or None, instance=instance,
-                             initial={'sex': instance.profile.sex, 'avatar': instance.profile.avatar})
+                             initial={'date_of_birth': instance.profile.date_of_birth,
+                                      'sex': instance.profile.sex,
+                                      'avatar': instance.profile.avatar})
     if form.is_valid():
         form.save()
+        profile = instance.profile
+        profile.date_of_birth = form.cleaned_data['date_of_birth']
+        profile.sex = form.cleaned_data['sex']
+        profile.avatar = form.cleaned_data['avatar']
+        profile.save()
         update_session_auth_hash(request, form.instance)
         messages.success(request, _('Ви змінили свій профіль, ' + instance.username + '!'),
                          extra_tags='success')
@@ -144,22 +153,61 @@ def delete(request, id=None):
     return render(request, 'profile_delete_form.html', context)
 
 
-from django.contrib.contenttypes.models import ContentType
+# from django.contrib.contenttypes.models import ContentType
+#
+#
+# def show_users(request, ct, ids):
+#     model = get_object_or_404(ContentType, id=ct)
+#     queryset = model.get_all_objects_for_this_type()
+#     users = []
+#     users_ids = ids.split(',')
+#     if len(users_ids) > 1:
+#         for user_id in users_ids:
+#             content = queryset.get(pk=user_id)
+#             users.append(content)
+#     else:
+#         users = queryset.get(pk=ids)
+#     return render(request, 'show_user_from_admin.html', {'users': users})
 
-def show_users(request, ct, ids):
-    model = get_object_or_404(ContentType, id=ct)
-    queryset = model.get_all_objects_for_this_type()
-    users = []
-    users_ids = ids.split(',')
-    if len(users_ids) > 1:
-        for user_id in users_ids:
-            content = queryset.get(pk=user_id)
-            users.append(content)
+
+from django.http import JsonResponse
+
+
+def login_ajax(request):
+    context = {}
+    return_path = request.META.get('HTTP_REFERER', '/')
+    if 'next' in request.GET:
+        path = request.GET['my_redirect_field']
+    if return_path == request.build_absolute_uri():
+        path = '/'
     else:
-        users = queryset.get(pk=ids)
-    return render(request, 'show_user_from_admin.html', {'users': users})
-
-
-
-
-
+        path = return_path
+    context["location"] = path
+    if request.is_ajax() and request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            last_login = user.last_login.strftime("%d-%m-%Y %H:%M:%S")
+            auth.login(request, user)
+            messages.success(request, _('Вітаю Вас на сайті, ' + username + '! Останій раз на сайті Ви були ' +
+                                        str(last_login) + '.'), extra_tags='success')
+            context['user'] = user.username
+            return JsonResponse(context)
+        elif not username and password:
+            context['login_error_username'] = "Обов'язково введіть ім'я!"
+            return JsonResponse(context)
+        elif username and not password:
+            context['username'] = username
+            context['login_error_password'] = "Обов'язково введіть пароль!"
+            return JsonResponse(context)
+        elif not username and not password:
+            context['login_error_username_password'] = "Ви не ввели жодних даних!"
+            return JsonResponse(context)
+        else:
+            context['login_error'] = 'Користувач не знайдений!'
+            return JsonResponse(context)
+    else:
+        context['username'] = ''
+        context['password'] = ''
+    return render(request, 'login.html', context)

@@ -7,10 +7,10 @@ from blog.views import (start_page,
                         article_create,
                         article_update,
                         article_delete,
-                        article_detail,
+                        # article_detail,
+                        article_detail_ajax,
                         add_like,
-                        photo,
-                        proposals)
+                        photo)
 
 
 app_name = 'blog'
@@ -32,11 +32,13 @@ urlpatterns = [
         name='article_update'),
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/(?P<article_slug>.*)/delete/$', article_delete,
         name='article_delete'),
-    url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/(?P<article_slug>.*)/$', article_detail,
-        name='article_detail'),
+    url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/(?P<article_slug>.*)/$', article_detail_ajax,
+        name='article_detail_ajax'),
+    # url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/(?P<article_slug>.*)/$', article_detail,
+    #     name='article_detail'),
     url(r'^(?P<item_slug>.*)/list/$', photo, name='photo'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact_page.html')),
     url(r'^add_like/(?P<id>[0-9]+)/$', add_like, name='add_like'),
-    url(r'^3d-max/proposals/$', proposals, name='proposals'),
+    #url(r'^3d-max/proposals/$', proposals, name='proposals'),
     ]
 

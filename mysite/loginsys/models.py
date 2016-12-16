@@ -9,6 +9,7 @@ import os
 
 from django.core.files import File
 
+
 def upload_location(instance, filename):
     path = 'upload/profile_images'
     profile = Profile.objects.order_by("user_id").last()
@@ -41,7 +42,8 @@ class Profile(models.Model):
 
     # user = models.OneToOneField(User, primary_key=True, related_name="profile", verbose_name=_("Користувач"),
     #                             on_delete=models.CASCADE)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, related_name="profile", verbose_name=_("Користувач"),
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, related_name="profile",
+                                verbose_name=_("Користувач"),
                                 on_delete=models.CASCADE, unique=True)
     sex = models.CharField(max_length=20, choices=(('Man', _('Чоловік')), ('Woman', _('Жінка'))),
                            verbose_name=_("Стать"))
@@ -55,7 +57,7 @@ class Profile(models.Model):
         return self.user.get_full_name()
 
     def natural_key(self):                 # natural key for serialization also for serialization for manage.py dumpdata --natural-foreign
-        return self.user.get_full_name()
+        return [self.user.username, self.user.get_full_name(), self.avatar.url]
 
 
 

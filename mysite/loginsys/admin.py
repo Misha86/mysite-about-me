@@ -38,7 +38,7 @@ class ProfileAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     actions_on_top = False
     date_hierarchy = 'profile_create'
-    fields = ['user', 'sex', 'avatar']
+    fields = ['user', 'sex', 'avatar', 'date_of_birth']
     list_filter = ['user']
     search_fields = ['user']
     list_display = ['__str__', 'sex', 'avatar']

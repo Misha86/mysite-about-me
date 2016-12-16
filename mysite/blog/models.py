@@ -50,9 +50,12 @@ class Article(models.Model):
     article_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Дата створення"))
     article_update = models.DateTimeField(auto_now=True, verbose_name=_("Дата оновлення"))
     article_likes = models.IntegerField(verbose_name=_("Подобається"), default=0)
-    article_image = models.ImageField(verbose_name=_("Картинки"), upload_to=upload_location, blank=True, null=True,
+    article_image = models.ImageField(verbose_name=_("Картинки"), upload_to=upload_location, width_field="width_field",
+                                      height_field="height_field", blank=True, null=True,
                                       help_text=_("Зображення до статті"))
-    article_slug = models.SlugField(verbose_name=_("Ім`я статті транслітом"), blank=True, unique=True)
+    width_field = models.IntegerField(default=0, verbose_name=_("Ширина картинки в пікселях"))
+    height_field = models.IntegerField(default=0, verbose_name=_("Висота картинки в пікселях"))
+    article_slug = models.SlugField(verbose_name=_("Ім`я статті транслітом"), blank='', unique='')
 
     class Meta:
         db_table = "articles"
@@ -72,7 +75,10 @@ class Article(models.Model):
             return True
 
     def get_absolute_url(self):
-        return reverse('blog:article_detail', kwargs={'item_slug': self.article_category.menu_category.menu_name,
+        # return reverse('blog:article_detail', kwargs={'item_slug': self.article_category.menu_category.menu_name,
+        #                                               'category_slug': self.article_category.category_name,
+        #                                               'article_slug': self.article_slug})
+        return reverse('blog:article_detail_ajax', kwargs={'item_slug': self.article_category.menu_category.menu_name,
                                                       'category_slug': self.article_category.category_name,
                                                       'article_slug': self.article_slug})
     get_absolute_url.admin_order_field = 'article_date'

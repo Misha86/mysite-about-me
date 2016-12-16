@@ -5,12 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{% block title %} {% trans 'Поліщук Михайло' %}{% endblock %}</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/png">
+
 
     <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
 
@@ -24,9 +28,10 @@
       <script src="{% static 'js/angular.js' %}"></script>
     <![endif]-->
 
-    {% block scripts %}{% endblock scripts %}
+    {#    {% block scripts %}{% endblock scripts %}#}
 
 </head>
+
 <body>
 {% block error %}
 
@@ -37,7 +42,11 @@
             <!-- Header -->
             <header class="container" role="banner">
 
-                {% include 'messages.html' %}
+                <div id="messages">
+
+                    {% include 'messages.html' %}
+
+                </div>
 
                 <div class="row">
                     <div class="col-lg-8 col-xs-12 col-lg-offset-1">
@@ -86,6 +95,9 @@
 {#<script src="{% static 'js/jquery.min.js' %}"></script>#}
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{% static 'js/bootstrap.js' %}"></script>
+
+{% block scripts %}{% endblock scripts %}
+
 </body>
 </html>
 

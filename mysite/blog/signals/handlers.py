@@ -1,7 +1,8 @@
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_delete
 from blog.models import Article
 from django.utils.text import slugify
 from django.dispatch import receiver
+import os
 
 
 def create_slug(instance, new_slug=None):
@@ -38,3 +39,9 @@ def pre_save_article_receiver(sender, instance, *args, **kwargs):
 #
 #
 # pre_save.connect(pre_save_article_receiver, sender=Article)
+
+@receiver(post_delete, sender=Article, dispatch_uid="my_article_delete")
+def post_delete_article_receiver(sender, instance, *args, **kwargs):
+    image_url = instance.article_image.path
+    os.remove(image_url)
+    os.rmdir(os.path.dirname(image_url))

@@ -15,14 +15,9 @@
 
 {% block content %}
 
-    <div class="flatpage well">
-            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5">
-            </div>
-            <div>
-                <h1>{{ flatpage.title }}</h1>
-                {{ flatpage.content }}
-            </div>
-        </div>
+    <div class="col-md-12 col-sm-12 flatpage well">
+        <h1>{{ flatpage.title }}</h1>
+        {{ flatpage.content }}
     </div>
 
 {% endblock %}
