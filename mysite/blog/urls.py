@@ -2,7 +2,8 @@ from blog.models import Article
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from blog.views import (start_page,
-                        article_list,
+                        # article_list,
+                        article_list_ajax,
                         articles_list_update,
                         article_create,
                         article_update,
@@ -26,7 +27,9 @@ urlpatterns = [
     url(r'^$', start_page, name='start_page'),
     url(r'^send-mail-ajax$', send_mail_ajax, name='send_mail_ajax'),
 
-    url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/$', article_list, name='article_list'),
+    # url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/$', article_list, name='article_list'),
+    url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list-ajax/$', article_list_ajax, name='article_list'),
+
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/list/update/$', articles_list_update,
         name='articles_list_update'),
     url(r'^(?P<item_slug>.*)/(?P<category_slug>.*)/create/$', article_create, name='article_create'),

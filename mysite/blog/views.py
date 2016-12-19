@@ -22,6 +22,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.cache import cache_control
 from django.views.decorators.vary import vary_on_headers
 import logging
+from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
@@ -73,22 +74,6 @@ def start_page(request):
     current_page = Paginator(users, 6)
     page_number = request.GET.get('page', 1)
     users_list = current_page.page(page_number)
-
-    # if request.user:
-    #     logger = logging.getLogger(__name__)
-    #     logger.error('\nSomething went wrong!\n')
-
-    # if request.POST and 'pause' not in request.session:
-    #     form = SendMassageForm(request.POST)
-    #     if form.is_valid():
-    #         email = form.cleaned_data['email']
-    #         massage = form.cleaned_data['massage']
-    #         from_email = settings.EMAIL_HOST_USER
-    #         to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
-    #         send_mail(email, massage, from_email, to_email, fail_silently=False)
-    #         request.session.set_expiry(60)
-    #         request.session['pause'] = True
-    #         return redirect('/')
     context = {
         'form': form,
         'users': users_list,
@@ -96,12 +81,10 @@ def start_page(request):
     return render(request, 'content_start_page.html', context)
 
 
-import time
-
-
 def send_mail_ajax(request):
     data = dict()
     form = SendMassageForm()
+    import time
     now = time.time()
 
     if request.session.get('send', False) and request.session.get('start_time', False) > now:
@@ -115,7 +98,7 @@ def send_mail_ajax(request):
                 massage = form.cleaned_data['massage']
                 from_email = settings.EMAIL_HOST_USER
                 to_email = [settings.EMAIL_HOST_USER, 'mishaelitzem1@rambler.ru']
-                # send_mail(email, massage, from_email, to_email, fail_silently=False)
+                send_mail(email, massage, from_email, to_email, fail_silently=False)
 
                 form = SendMassageForm()
 
@@ -137,59 +120,105 @@ def send_mail_ajax(request):
     return JsonResponse(data)
 
 
-
-
-
-# @cache_page(60 * 15, key_prefix='articles')
-def article_list(request, item_slug, category_slug):
+def article_list_ajax(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
     article = Article.objects.filter(article_category__category_name=category_slug,
                                      article_category__menu_category__menu_name=item_slug).order_by('-article_date')
-    # suite all articles adding class = "row"
-    articles_list = bootstrap_query(article, 3)
     articles_carousel = article.order_by('-article_likes')[0:3]
     query = request.GET.get('q')
     if query:
-        articles_list = Article.objects.filter(
+        article = Article.objects.filter(
             Q(article_title__icontains=query) |
             Q(article_text__icontains=query)).distinct()
+
+    # suite all articles adding class = "row"
+    articles_list = bootstrap_query(article, 3)
     paginator = Paginator(articles_list, 3)
     page = request.GET.get('page')
+
     try:
-        # it`s for pagination in bootstrap part 1
-        page_before = int(page) - 3
-        page_after = int(page) + 3
-        list_pagination = []
-        for p in paginator.page_range:
-            if p == page or p == paginator.page_range[0] or p == paginator.page_range[-1]:
-                list_pagination.append(p)
-            elif p < page_before or p > page_after:
-                if page_before == paginator.page_range[0]:
-                    page_before += 1
-                elif page_after == paginator.page_range[-1]:
-                    page_after += 1
-                else:
-                    continue
-            else:
-                list_pagination.append(p)
-        #
         articles = paginator.page(page)
+        # print(articles.page_range)
     except PageNotAnInteger:
-        article = paginator.page(1)
+        # If page is not an integer, deliver first page.
+        articles = paginator.page(1)
     except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
         articles = paginator.page(paginator.num_pages)
 
-    # it`s for pagination in bootstrap: catch except TypeError part 2
-    except TypeError:
-        list_pagination = []
-        for s in paginator.page_range:
-            if s in paginator.page_range[:8] or s in paginator.page_range[-1:]:
-                list_pagination.append(s)
-                page_after = 8
-            else:
-                continue
-        articles = paginator.page(1)
-    return render(request, 'gallery_works.html', locals())
+    context = {
+        'articles': articles,
+        'paginator': paginator,
+        'articles_carousel': articles_carousel,
+        'category': category
+    }
+
+    if request.is_ajax():
+        data = dict()
+        data['html_articles'] = render_to_string('partial_articles_list.html',
+                                                 {'articles': articles,
+                                                  },
+                                                 request=request)
+
+        data['html_page'] = render_to_string('partial_articles_pages.html',
+                                             {'articles': articles,
+                                              'paginator': paginator},
+                                             request=request)
+        return JsonResponse(data)
+
+    return render(request, 'gallery_works.html', context)
+
+
+# # @cache_page(60 * 15, key_prefix='articles')
+# def article_list(request, item_slug, category_slug):
+#     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
+#     article = Article.objects.filter(article_category__category_name=category_slug,
+#                                      article_category__menu_category__menu_name=item_slug).order_by('-article_date')
+#     # suite all articles adding class = "row"
+#     articles_list = bootstrap_query(article, 3)
+#     articles_carousel = article.order_by('-article_likes')[0:3]
+#     query = request.GET.get('q')
+#     if query:
+#         articles_list = Article.objects.filter(
+#             Q(article_title__icontains=query) |
+#             Q(article_text__icontains=query)).distinct()
+#     paginator = Paginator(articles_list, 3)
+#     page = request.GET.get('page')
+#     try:
+#         # it`s for pagination in bootstrap part 1
+#         page_before = int(page) - 3
+#         page_after = int(page) + 3
+#         list_pagination = []
+#         for p in paginator.page_range:
+#             if p == page or p == paginator.page_range[0] or p == paginator.page_range[-1]:
+#                 list_pagination.append(p)
+#             elif p < page_before or p > page_after:
+#                 if page_before == paginator.page_range[0]:
+#                     page_before += 1
+#                 elif page_after == paginator.page_range[-1]:
+#                     page_after += 1
+#                 else:
+#                     continue
+#             else:
+#                 list_pagination.append(p)
+#         #
+#         articles = paginator.page(page)
+#     except PageNotAnInteger:
+#         article = paginator.page(1)
+#     except EmptyPage:
+#         articles = paginator.page(paginator.num_pages)
+#
+#     # it`s for pagination in bootstrap: catch except TypeError part 2
+#     except TypeError:
+#         list_pagination = []
+#         for s in paginator.page_range:
+#             if s in paginator.page_range[:8] or s in paginator.page_range[-1:]:
+#                 list_pagination.append(s)
+#                 page_after = 8
+#             else:
+#                 continue
+#         articles = paginator.page(1)
+#     return render(request, 'gallery_works.html', locals())
 
 
 def articles_list_update(request, item_slug, category_slug=None):
