@@ -119,6 +119,8 @@ def send_mail_ajax(request):
                                          request=request)
     return JsonResponse(data)
 
+from django.core import serializers
+import json
 
 def article_list_ajax(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
@@ -126,14 +128,17 @@ def article_list_ajax(request, item_slug, category_slug):
                                      article_category__menu_category__menu_name=item_slug).order_by('-article_date')
     articles_carousel = article.order_by('-article_likes')[0:3]
     query = request.GET.get('q')
+    data = dict()
     if query:
-        article = Article.objects.filter(
+        article = article.filter(
             Q(article_title__icontains=query) |
             Q(article_text__icontains=query)).distinct()
 
+        data['json_query'] = list(article.values_list('article_title', flat=True))
+
     # suite all articles adding class = "row"
     articles_list = bootstrap_query(article, 3)
-    paginator = Paginator(articles_list, 3)
+    paginator = Paginator(articles_list, 2)
     page = request.GET.get('page')
 
     try:
@@ -154,7 +159,8 @@ def article_list_ajax(request, item_slug, category_slug):
     }
 
     if request.is_ajax():
-        data = dict()
+        # articles_json = list(Article.objects.values_list('article_title', flat=True))
+        # data['json_query'] = list(article.values_list('article_title', flat=True))
         data['html_articles'] = render_to_string('partial_articles_list.html',
                                                  {'articles': articles,
                                                   },

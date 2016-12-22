@@ -17,6 +17,8 @@
 
 {% block scripts %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
     <script src="{% static 'js/blog.js' %}"></script>
 
 {% endblock scripts %}
@@ -53,15 +55,17 @@
             {% endif %}
             <div class="carousel-inner" role="listbox">
                 {% for article_carousel in articles_carousel %}
-                    <div class="{% if article_carousel != articles_carousel.0 %} item {% else %} item active {% endif %}">
-                        <img class="first-slide" src="{{ article_carousel.article_image.url }}" alt="{{ article_carousel.article_title }}">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>{{ article_carousel.article_title }}</h1>
-                                <p>{{ article_carousel.article_text|shot_text:200|capfirst }}</p>
+                    {% if article_carousel.article_image %}
+                        <div class="{% if article_carousel != articles_carousel.0 %} item {% else %} item active {% endif %}">
+                            <img class="first-slide" src="{{ article_carousel.article_image.url }}" alt="{{ article_carousel.article_title }}">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>{{ article_carousel.article_title }}</h1>
+                                    <p>{{ article_carousel.article_text|shot_text:200|capfirst }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             {% if articles_carousel.count > 1 %}
@@ -79,8 +83,8 @@
         <!-- search_works -->
         <div class="row">
             <div class="col-md-6 col-sm-6">
-                <form id="search" class="form-group input-group" method="get" action="">
-                    <input class="form-control" type="text" name="q" placeholder="пошук статті" value="{{ request.GET.q }}"/>
+                <form id="search" class="form-group input-group" method="get" action="" >
+                    <input id="query" class="form-control" type="text" name="q" placeholder="пошук статті" value="{{ request.GET.q }}"/>
                     <span class="input-group-btn">
                         <input class="btn btn-primary" type="submit" value="Пошук"/>
                     </span>

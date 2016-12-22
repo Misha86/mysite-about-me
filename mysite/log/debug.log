@@ -23568,3 +23568,1931 @@ Traceback (most recent call last):
   File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 167, in render
     values = list(values)
 TypeError: 'Article' object is not iterable
+ERROR 2016-12-19 17:17:17,660 base 3196 4512 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 1043, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+WARNING 2016-12-19 17:18:25,897 base 3196 5704 Not Found: /3d-max/galereya-robit/my-article-1/delete/
+ERROR 2016-12-19 17:18:31,864 base 3196 1476 Internal Server Error: /3d-max/galereya-robit/my-article-1/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 263, in article_detail_ajax
+    article = category.articles.get(article_slug=article_slug)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 387, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Article matching query does not exist.
+ERROR 2016-12-19 17:18:40,099 base 3196 4352 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 1043, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-19 17:18:52,186 base 3196 4044 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 1043, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-19 17:20:21,037 base 3196 1668 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 1043, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-19 17:20:24,413 base 3196 3948 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 1043, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-19 17:20:44,499 base 1256 6128 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 319, in render
+    match = condition.eval(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 951, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-19 17:21:56,706 base 1256 5712 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 169, in article_list_ajax
+    return render(request, 'gallery_works.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 319, in render
+    match = condition.eval(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 951, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 709, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 891, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 68, in _get_url
+    self._require_file()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\fields\files.py", line 46, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'article_image' attribute has no file associated with it.
+ERROR 2016-12-20 11:46:41,575 base 4204 5104 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 81, in start_page
+    return render(request, 'content_start_page.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 151, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 148, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 128, in find_template
+    template_name, skip=history,
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\engine.py", line 157, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loaders\cached.py", line 60, in get_template
+    template_name, template_dirs, skip,
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loaders\base.py", line 46, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 189, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 231, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 516, in parse
+    raise self.error(token, e)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 514, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 237, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'scripts' appears more than once
+WARNING 2016-12-20 11:46:43,404 base 4204 3044 Not Found: /favicon.ico
+ERROR 2016-12-20 13:16:57,131 base 5768 6136 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1632, in add_fields
+    name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1405, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1330, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: article_category, article_category_id, article_date, article_image, article_likes, article_slug, article_tag, article_text, article_title, article_update, article_user, article_user_id, comments, height_field, id, width_field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 135, in article_list_ajax
+    data['json_query'] = article.values_list('name', flat=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 725, in values_list
+    clone = self._values(*fields)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 707, in _values
+    query.add_fields(field_names, True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1647, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: article_category, article_category_id, article_date, article_image, article_likes, article_slug, article_tag, article_text, article_title, article_update, article_user, article_user_id, comments, height_field, id, width_field
+ERROR 2016-12-20 13:17:00,791 base 5768 5940 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1632, in add_fields
+    name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1405, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1330, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: article_category, article_category_id, article_date, article_image, article_likes, article_slug, article_tag, article_text, article_title, article_update, article_user, article_user_id, comments, height_field, id, width_field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 135, in article_list_ajax
+    data['json_query'] = article.values_list('name', flat=True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 725, in values_list
+    clone = self._values(*fields)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 707, in _values
+    query.add_fields(field_names, True)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\sql\query.py", line 1647, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: article_category, article_category_id, article_date, article_image, article_likes, article_slug, article_tag, article_text, article_title, article_update, article_user, article_user_id, comments, height_field, id, width_field
+ERROR 2016-12-20 13:17:55,957 base 5664 3484 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 170, in article_list_ajax
+    return JsonResponse(data)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\http\response.py", line 505, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\json.py", line 115, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article'] is not JSON serializable
+ERROR 2016-12-20 13:22:33,949 base 6108 5744 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", article.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:23:32,787 base 5568 108 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", article.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:23:36,505 base 5568 5416 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", article.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:23:43,891 base 5568 5804 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", article.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:29:07,054 base 4000 5936 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", Article.objects.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:29:09,534 base 4000 4476 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", Article.objects.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:29:10,586 base 4000 3820 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 136, in article_list_ajax
+    data['json_query'] = serializers.serialize("json", Article.objects.values_list('article_title', flat=True))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\__init__.py", line 129, in serialize
+    s.serialize(queryset, **options)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\base.py", line 83, in serialize
+    concrete_model = obj._meta.concrete_model
+AttributeError: 'str' object has no attribute '_meta'
+ERROR 2016-12-20 13:37:06,529 base 2788 3312 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(article.values_list('article_title', flat=True))
+  File "C:\Python34\lib\json\__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: [] is not JSON serializable
+ERROR 2016-12-20 13:37:08,559 base 2788 1164 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(article.values_list('article_title', flat=True))
+  File "C:\Python34\lib\json\__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: [] is not JSON serializable
+ERROR 2016-12-20 13:37:10,528 base 2788 5452 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(article.values_list('article_title', flat=True))
+  File "C:\Python34\lib\json\__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: [] is not JSON serializable
+ERROR 2016-12-20 13:37:11,482 base 2788 4144 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(article.values_list('article_title', flat=True))
+  File "C:\Python34\lib\json\__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: [] is not JSON serializable
+ERROR 2016-12-20 13:38:34,509 base 5592 5024 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), )
+  File "C:\Python34\lib\json\__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 13:39:02,703 base 5644 1664 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 148, in __init__
+    self.item_separator, self.key_separator = separators
+ValueError: need more than 1 value to unpack
+ERROR 2016-12-20 13:39:29,515 base 5644 6084 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 137, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 148, in __init__
+    self.item_separator, self.key_separator = separators
+ValueError: need more than 1 value to unpack
+ERROR 2016-12-20 13:40:30,506 base 2480 4192 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 148, in __init__
+    self.item_separator, self.key_separator = separators
+ValueError: need more than 1 value to unpack
+ERROR 2016-12-20 13:40:31,760 base 2480 3564 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 148, in __init__
+    self.item_separator, self.key_separator = separators
+ValueError: need more than 1 value to unpack
+ERROR 2016-12-20 13:40:32,838 base 2480 3020 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 148, in __init__
+    self.item_separator, self.key_separator = separators
+ValueError: need more than 1 value to unpack
+ERROR 2016-12-20 13:41:12,599 base 5544 4000 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separator=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+TypeError: __init__() got an unexpected keyword argument 'separator'
+ERROR 2016-12-20 13:41:13,111 base 5544 3368 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separator=(','))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+TypeError: __init__() got an unexpected keyword argument 'separator'
+ERROR 2016-12-20 13:42:34,966 base 4520 4536 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(',', ':'))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 13:42:35,961 base 4520 6008 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 160, in article_list_ajax
+    data['json_query'] = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(',', ':'))
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 16:40:06,298 base 2904 4984 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 166, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:40:49,865 base 2904 3128 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 166, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:41:24,803 base 3632 1896 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:41:36,216 base 3632 4376 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:43:41,789 base 3632 5256 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:43:47,955 base 3632 4632 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:44:17,220 base 4792 4360 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:44:45,166 base 4792 2448 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:44:45,972 base 4792 4552 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:44:47,749 base 4792 6096 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 586, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'mysite.blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 596, in reverse
+    key)
+django.core.urlresolvers.NoReverseMatch: 'mysite.blog' is not a registered namespace
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 167, in article_list_ajax
+    request=request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'add_like' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: ['add_like/(?P<id>[0-9]+)/$']
+ERROR 2016-12-20 16:51:23,695 base 2160 3120 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 159, in article_list_ajax
+    articles_json = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(',', ':'), ensure_ascii = False)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 16:51:26,855 base 2160 5152 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 159, in article_list_ajax
+    articles_json = json.dumps(Article.objects.values_list('article_title', flat=True), separators=(',', ':'), ensure_ascii = False)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 16:56:37,641 base 4792 1476 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 173, in article_list_ajax
+    return JsonResponse(data)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\http\response.py", line 505, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\json.py", line 115, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 16:56:40,711 base 4792 2152 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 173, in article_list_ajax
+    return JsonResponse(data)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\http\response.py", line 505, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\json.py", line 115, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: ['My article 2', 'My article', 'ergfe', 'erer', 'ererrrr', 'ertfer', '34t3gt', 'Моя перша стаття', 'ergerg'] is not JSON serializable
+ERROR 2016-12-20 17:16:35,891 base 3524 4680 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 171, in article_list_ajax
+    return JsonResponse(data)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\http\response.py", line 505, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python34\lib\json\__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "C:\Python34\lib\json\encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python34\lib\json\encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\serializers\json.py", line 115, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python34\lib\json\encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <Article: 34t3gt> is not JSON serializable
+ERROR 2016-12-20 17:17:29,929 base 5852 5976 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 161, in article_list_ajax
+    data['json_query'] = list(article.objects.values_list('article_title', flat=True))[:3]
+AttributeError: 'QuerySet' object has no attribute 'objects'
+ERROR 2016-12-20 17:57:21,301 base 5324 1088 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 17:57:27,166 base 5324 1896 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 17:57:33,015 base 5324 4100 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 17:57:38,052 base 5324 1348 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 17:58:39,534 base 5324 5052 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 17:58:43,510 base 5324 3996 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True))[:max_rows]
+TypeError: slice indices must be integers or None or have an __index__ method
+ERROR 2016-12-20 18:00:21,100 base 5400 2352 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True)[:max_rows])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 276, in __getitem__
+    (k.stop is None or k.stop >= 0))), \
+TypeError: unorderable types: str() >= int()
+ERROR 2016-12-20 18:00:21,592 base 5400 3632 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 138, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True)[:max_rows])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 276, in __getitem__
+    (k.stop is None or k.stop >= 0))), \
+TypeError: unorderable types: str() >= int()
+ERROR 2016-12-20 18:02:43,102 base 5676 4480 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 131, in article_list_ajax
+    max_rows = int(request.GET.get('maxRows'))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR 2016-12-20 18:03:57,462 base 4464 2348 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 133, in article_list_ajax
+    max_rows = int(request.GET.get('maxRows'))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR 2016-12-20 18:03:57,725 base 4464 5432 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 133, in article_list_ajax
+    max_rows = int(request.GET.get('maxRows'))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR 2016-12-20 18:05:06,181 base 6036 5232 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 139, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True)[:max_rows])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 276, in __getitem__
+    (k.stop is None or k.stop >= 0))), \
+TypeError: unorderable types: str() >= int()
+ERROR 2016-12-20 18:05:50,636 base 6036 5532 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 139, in article_list_ajax
+    data['json_query'] = list(article.values_list('article_title', flat=True)[:max_rows])
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\db\models\query.py", line 276, in __getitem__
+    (k.stop is None or k.stop >= 0))), \
+TypeError: unorderable types: str() >= int()
+ERROR 2016-12-20 18:06:24,341 base 4872 2688 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 135, in article_list_ajax
+    print(int(max_rows))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+ERROR 2016-12-20 18:06:24,817 base 4872 4848 Internal Server Error: /3d-max/galereya-robit/list-ajax/
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 135, in article_list_ajax
+    print(int(max_rows))
+TypeError: int() argument must be a string or a number, not 'NoneType'
+WARNING 2016-12-22 11:13:53,342 base 380 4592 Not Found: /favicon.ico
+ERROR 2016-12-22 11:16:19,094 base 380 3808 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 507, in render
+    current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for 'mysite.' with arguments '()' and keyword arguments '{'item_slug': 'interesi', 'category_slug': 'django'}' not found. 0 pattern(s) tried: []
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Nout\Desktop\templatesite\mysite\blog\views.py", line 81, in start_page
+    return render(request, 'content_start_page.html', context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\library.py", line 243, in render
+    return t.render(new_context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 208, in render
+    return self._render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\base.py", line 959, in render_annotated
+    return self.render(context)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\utils\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\template\defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "C:\Users\Nout\Desktop\templatesite\lib\site-packages\django\core\urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+django.core.urlresolvers.NoReverseMatch: Reverse for '' with arguments '()' and keyword arguments '{'item_slug': 'interesi', 'category_slug': 'django'}' not found. 0 pattern(s) tried: []
