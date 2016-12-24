@@ -126,9 +126,15 @@ def article_list_ajax(request, item_slug, category_slug):
     category = get_object_or_404(Category,  menu_category__menu_name=item_slug, category_name=category_slug)
     article = Article.objects.filter(article_category__category_name=category_slug,
                                      article_category__menu_category__menu_name=item_slug).order_by('-article_date')
-    articles_carousel = article.order_by('-article_likes')[0:3]
-    query = request.GET.get('q')
+
+    context = dict()
+    article_with_image = article.exclude(article_image__exact='')
+    if article_with_image.exists():
+        articles_carousel = article_with_image.order_by('-article_likes')[0:3]
+        context['articles_carousel'] = articles_carousel
+
     data = dict()
+    query = request.GET.get('q')
     if query:
         article = article.filter(
             Q(article_title__icontains=query) |
@@ -151,12 +157,11 @@ def article_list_ajax(request, item_slug, category_slug):
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = paginator.page(paginator.num_pages)
 
-    context = {
+    context.update({
         'articles': articles,
         'paginator': paginator,
-        'articles_carousel': articles_carousel,
         'category': category
-    }
+    })
 
     if request.is_ajax():
         # articles_json = list(Article.objects.values_list('article_title', flat=True))

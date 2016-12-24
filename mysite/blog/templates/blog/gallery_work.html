@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %} {% load i18n %}
+{% extends "base.html" %} {% load staticfiles %} {% load i18n %} {% load markdown_deux_tags %}
 
 
 {% block title %}3D MAX | {{ article.article_title|capfirst }}{% endblock %}
@@ -7,12 +7,23 @@
 
     <script src="{% static 'js/comment.js' %}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+
+    <script>
+    $(function(){
+        $(".content-mardown").each(function(){
+            var content = $(this)
+            content.html(marked(content.text()))
+            $("p img").addClass("img-responsive")
+        });
+    })
+
+    </script>
+
 {% endblock scripts %}
 
 
-{% block style %}
-
-{% endblock %}
+{% block style %}{% endblock %}
 
 
 {% block content %}
@@ -47,7 +58,7 @@
         <h4>{{ article.article_title }}</h4>
     </div>
     <div class="well">
-        <p>{{ article.article_text }}</p>
+        <div class="content-mardown">{{ article.article_text }}</div>
     </div>
 
     {% if comments %}
@@ -85,17 +96,17 @@
 
         <div id="comment-form" class="col-lg-6 col-md-6 col-sm-8 article well">
 
-                        {% include 'partial_comment_form.html' %}
-{#            <form id="form-massage" class="form-row"  method="POST">#}
-{#                <fieldset>#}
-{#                    <div class="form-group">#}
-{#                        {% csrf_token %}#}
-{#                        {{ form }}#}
-{#                        <button id="submit" type="button" class="btn btn-primary">добавити коментар</button>#}
-{#                    </div>#}
-{#                </fieldset>#}
-{#            </form>#}
-{##}
+            {% include 'partial_comment_form.html' %}
+            {#            <form id="form-massage" class="form-row"  method="POST">#}
+            {#                <fieldset>#}
+            {#                    <div class="form-group">#}
+            {#                        {% csrf_token %}#}
+            {#                        {{ form }}#}
+            {#                        <button id="submit" type="button" class="btn btn-primary">добавити коментар</button>#}
+            {#                    </div>#}
+            {#                </fieldset>#}
+            {#            </form>#}
+            {##}
         </div>
 
     {% endif %}

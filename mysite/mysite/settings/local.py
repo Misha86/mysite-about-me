@@ -70,6 +70,9 @@ if settings.DEBUG:
         'django.contrib.flatpages',
         'django.contrib.webdesign',   # for lorem
         'django.contrib.humanize',
+        # third part
+        'pagedown',
+        'markdown_deux',
         # my apps
         'blog.apps.BlogConfig',
         'comment',

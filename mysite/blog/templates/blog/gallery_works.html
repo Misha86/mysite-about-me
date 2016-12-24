@@ -17,8 +17,6 @@
 
 {% block scripts %}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
     <script src="{% static 'js/blog.js' %}"></script>
 
 {% endblock scripts %}
@@ -43,14 +41,18 @@
 
             <!-- Indicators -->
             {% if articles_carousel.count > 1 %}
+
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    {% if articles_carousel.count == 2 %}
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                    {% else %}
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
+
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+
+                    {% if articles_carousel.count == 3 %}
+
                         <li data-target="#myCarousel" data-slide-to="2"></li>
+
                     {% endif %}
+
                 </ol>
             {% endif %}
             <div class="carousel-inner" role="listbox">
@@ -90,12 +92,6 @@
                     </span>
                 </form>
             </div>
-        </div>
-
-    {% else %}
-
-        <div class="col-md-10 col-md-offset-2">
-            <h2>Даний список покищо пустий!</h2>
         </div>
 
     {% endif %}

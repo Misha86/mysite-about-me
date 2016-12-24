@@ -1,10 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load staticfiles %}
 
 {% block title%}{{title}}{% endblock title%}
 
+
 {% block style %}
 
+    {{ form.media }}
+
 {% endblock style %}
+
+
+{% block scripts %}
+
+{#    <script src="{% static 'js/article-form.js' %}"></script>#}
+
+{% endblock %}
 
 {% block create_article_form %}
 
@@ -17,5 +27,6 @@
             <button type="button" class="btn btn-default pull-right"><a href="{{ return_path }}">{{ button_cancel }}</a></button>
         </form>
     </div>
+    <script src="{% static 'js/article-form.js'%}" defer ></script>
 
 {% endblock create_article_form %}

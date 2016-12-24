@@ -42,6 +42,9 @@ def pre_save_article_receiver(sender, instance, *args, **kwargs):
 
 @receiver(post_delete, sender=Article, dispatch_uid="my_article_delete")
 def post_delete_article_receiver(sender, instance, *args, **kwargs):
-    image_url = instance.article_image.path
-    os.remove(image_url)
-    os.rmdir(os.path.dirname(image_url))
+    if instance.article_image:
+        image_url = instance.article_image.path
+        os.remove(image_url)
+        os.rmdir(os.path.dirname(image_url))
+    else:
+        del instance

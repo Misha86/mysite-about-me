@@ -1,6 +1,7 @@
 from django import forms
 from blog.models import Article
 from navigation.models import Category
+from pagedown.widgets import PagedownWidget
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -19,6 +20,10 @@ class SendMassageForm(forms.Form):
 
 
 class ArticleForm(forms.ModelForm):
+    article_text = forms.CharField(widget=PagedownWidget(attrs={'class': 'form-control', 'rows': 4,
+                                                         'placeholder': _("введіть текст статті")},
+                                                             css=("css/demo_my.css",)),
+                                   label="Текст статті")
 
     class Meta:
         model = Article
@@ -30,7 +35,7 @@ class ArticleForm(forms.ModelForm):
 
         widgets = {'article_title': forms.TextInput(attrs={'class': 'form-control', 'rows': 4,
                                                            'placeholder': _('введіть назва статті')}),
-                   'article_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4,
-                                                         'placeholder': _("введіть текст статті")}),
+                   # 'article_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4,
+                   #                                       'placeholder': _("введіть текст статті")}),
                    'article_category': forms.Select(attrs={'class': 'form-control', 'rows': 4}),
                    'article_tag': forms.SelectMultiple(attrs={'class': 'form-control', 'rows': 4})}
